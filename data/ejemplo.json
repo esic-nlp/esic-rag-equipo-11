@@ -1,0 +1,52 @@
+[
+    {
+    "url": "https://www.condisline.com/TURRON-NESTLE-JUNGLY-232-G_210871_prd_es_ES.jsp",
+    "titulo": "TURRON NESTLE JUNGLY 232 G",
+    "valores_nutricionales_100_g": {
+      "Grasas": "30.4 gr",
+      "Saturadas": "15.6 gr",
+      "Hidratos de carbono": "58.3 gr",
+      "Azucares": "49 gr",
+      "Fibra alimentaria": "1.6 gr",
+      "Proteinas": "6.7 gr",
+      "Sal": "0.2 gr",
+      "Valor energetico": "537 kcal",
+      "Valor energetico en KJ": "2246 kJ"
+    },
+    "descripcion": "",
+    "categorias": [
+      "snacks"
+    ],
+    "precio_total": 4.49,
+    "precio_por_cantidad": 19.35,
+    "peso_volumen": "232g",
+    "alergenos": [],
+    "origen": "condis",
+    "direccion_manufactura": []
+  },
+  {
+    "url": "https://www.condisline.com/TURRON-NESTLE-CRUNCH-CHOCOLATE-190-G_260586_prd_es_ES.jsp",
+    "titulo": "TURRON NESTLE CRUNCH CHOCOLATE 190 G",
+    "valores_nutricionales_100_g": {
+      "Grasas": "26.9 gr",
+      "Saturadas": "15.3 gr",
+      "Hidratos de carbono": "61.7 gr",
+      "Azucares": "52.2 gr",
+      "Fibra alimentaria": "2.1 gr",
+      "Proteinas": "6.5 gr",
+      "Sal": "0.18 gr",
+      "Valor energetico": "520 kcal",
+      "Valor energetico en KJ": "2174 kJ"
+    },
+    "descripcion": "",
+    "categorias": [
+      "snacks"
+    ],
+    "precio_total": 4.49,
+    "precio_por_cantidad": 23.63,
+    "peso_volumen": "190g",
+    "alergenos": [],
+    "origen": "condis",
+    "direccion_manufactura": []
+  }
+]
