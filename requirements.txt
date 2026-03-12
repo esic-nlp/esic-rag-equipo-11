@@ -1,3 +1,8 @@
-faiss-cpu
+faiss-cpu 
 numpy
 sentence-transformers
+lxml 
+requests
+beautifulsoup4
+lxml
+pyarrow
