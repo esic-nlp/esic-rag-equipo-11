@@ -15,3 +15,7 @@ wheels/
 # Particular files
 src/acquisition_result.py
 src/preprocessing_result.py
+
+
+librerias.ipynb
+acquisition.py
