@@ -1,6 +1,7 @@
 import faiss
 import numpy as np
 from sentence_transformers import SentenceTransformer
+import pandas as pd
 
 # Inicializamos el modelo de lenguaje de forma global para mejorar la eficiencia
 embedder = SentenceTransformer("paraphrase-multilingual-MiniLM-L12-v2")
@@ -70,3 +71,11 @@ def consultar(df):
             break
         respuesta = buscar_y_responder(consulta, df, id)
         print(respuesta)
+# ---------------------------------------------------------------------------
+# Main
+# ---------------------------------------------------------------------------
+
+if __name__ == "__main__":
+    df=pd.read_csv("data/clean/products_clean.csv")
+    df_clean = consultar(df)
+

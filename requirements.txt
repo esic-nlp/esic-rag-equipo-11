@@ -6,4 +6,5 @@ requests
 beautifulsoup4
 lxml
 pyarrow
-pytesseract Pillow
+pytesseract 
+pillow
