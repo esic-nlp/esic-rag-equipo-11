@@ -1,13 +1,159 @@
+"""
+acquisition_ahorramas.py
+========================
+Scraper para www.ahorramas.com
+Genera data/raw/ahorramas_products.json con el formato estándar del proyecto.
+
+CÓMO FUNCIONA LA NUTRICIÓN:
+  Ahorramas muestra la tabla nutricional como una IMAGEN en el carrusel del producto.
+  La primera imagen (código C1C1 en la URL) es la foto frontal.
+  La segunda imagen (código EIAh u otro) es la tabla nutricional/ingredientes.
+  Este script descarga TODAS las imágenes del carrusel y aplica OCR a cada una
+  hasta extraer los nutrientes.
+
+REQUISITOS:
+  pip install requests beautifulsoup4 pytesseract Pillow
+  Windows → instalar Tesseract: https://github.com/UB-Mannheim/tesseract/wiki
+            y añadir al PATH, o descomentar la línea tesseract_cmd más abajo.
+"""
+
 import requests
 from bs4 import BeautifulSoup
 import pytesseract
 from PIL import Image
 import io, re
+import time
+import re
+import json
+import os
+import io
+from collections import Counter
+from typing import List, Dict, Optional
+
+try:
+    import pytesseract
+    from PIL import Image
+
+    OCR_AVAILABLE = True
+    # En Windows, descomenta y ajusta si tesseract no está en el PATH
+    # pytesseract.pytesseract.tesseract_cmd = r"C:\Program Files\Tesseract-OCR\tesseract.exe"
+except ImportError:
+    OCR_AVAILABLE = False
+    print("pytesseract o Pillow no están instalados. Instala con: pip install pytesseract Pillow")
+
+
+BASE_DOMAIN = "https://www.ahorramas.com"
+OUTPUT_DIR = os.path.join("data", "raw")
+OUTPUT_FILE = os.path.join(OUTPUT_DIR, "ahorramas_products.json")
+
+USER_AGENT = (
+    "Mozilla/5.0 (Windows NT 10.0; Win64; x64) "
+    "AppleWebKit/537.36 (KHTML, like Gecko) Chrome/125.0 Safari/537.36"
+)
+HEADERS = {
+    "User-Agent": USER_AGENT,
+    "Accept-Language": "es-ES,es;q=0.9",
+    "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8",
+    "Referer": "https://www.ahorramas.com/",
+}
+
+URLS: Dict[str, str] = {
+    "Alimentacion_Ofertas": "https://www.ahorramas.com/ofertas/alimentacion/",
+    "Bebidas_Ofertas": "https://www.ahorramas.com/ofertas/bebidas/",
+    "Congelados_Ofertas": "https://www.ahorramas.com/ofertas/congelados/",
+    "Frescos_Ofertas": "https://www.ahorramas.com/ofertas/frescos/",
+    "Carniceria": "https://www.ahorramas.com/frescos/carniceria/",
+    "Pollo": "https://www.ahorramas.com/frescos/carniceria/pollo/",
+    "Charcuteria": "https://www.ahorramas.com/frescos/charcuteria/",
+    "Ternera_y_vacuno": "https://www.ahorramas.com/frescos/carniceria/ternera-y-vacuno/",
+    "Guisantes_Congelados": "https://www.ahorramas.com/congelados/verduras-hortalizas-y-frutas-congeladas/guisantes/",
+    "Embutidos_ibericos": "https://www.ahorramas.com/frescos/charcuteria/embutidos-ibericos/",
+    "Fiambres_y_cocidos": "https://www.ahorramas.com/frescos/charcuteria/fiambres-y-cocidos/",
+    "Empanados_y_Elaborados": "https://www.ahorramas.com/frescos/carniceria/empanados-y-elaborados/",
+    "Aceite_Oliva_Virgen": "https://www.ahorramas.com/alimentacion/aceite-vinagre-y-sal/aceites/aceite-de-oliva-virgen-y-virgen-extra/",
+    "Arroz_Redondo": "https://www.ahorramas.com/alimentacion/arroces-pastas-y-legumbres/arroz/grano-redondo/",
+    "Pasta_Corta": "https://www.ahorramas.com/alimentacion/arroces-pastas-y-legumbres/pasta/macarrones-y-pasta-corta/",
+    "Legumbres_Lentejas": "https://www.ahorramas.com/alimentacion/arroces-pastas-y-legumbres/legumbres/lentejas/",
+    "Conservas_Atun": "https://www.ahorramas.com/alimentacion/conservas-de-pescado/atun/",
+    "Galletas_Maria": "https://www.ahorramas.com/alimentacion/galletas-cereales-y-barritas/galletas/galletas-maria/",
+    "Cereales_Chocolate": "https://www.ahorramas.com/alimentacion/galletas-cereales-y-barritas/cereales/cereales-con-chocolate/",
+    "Cafe_Capsulas": "https://www.ahorramas.com/alimentacion/cacao-cafes-e-infusiones/cafes/capsulas-de-cafe/",
+    "Quesos_Semicurados": "https://www.ahorramas.com/frescos/quesos/quesos-semicurados/",
+    "Pescado_Blanco": "https://www.ahorramas.com/frescos/pescado-y-mariscos/merluza-y-otro-pescado-blanco/",
+    "Huevos_Camperos": "https://www.ahorramas.com/frescos/huevos/camperos-y-ecologicos/",
+    "Refrescos_Cola": "https://www.ahorramas.com/bebidas/refrescos/de-cola/",
+    "Cervezas_Rubias": "https://www.ahorramas.com/bebidas/cerveza/cervezas-rubias/",
+    "Zumos_Naranja": "https://www.ahorramas.com/bebidas/zumos/naranja/",
+    "Pizzas_Congeladas": "https://www.ahorramas.com/congelados/pizzas-y-baguettes/pizzas/",
+    "Helados_Bombon": "https://www.ahorramas.com/congelados/helados/helado-bombon/",
+}
+
+QTY_RE = re.compile(r"(\d+(?:[.,]\d+)?)\s*(kg|g|l|ml|cl|ud|uds)\b", re.IGNORECASE)
+PRICE_RE = re.compile(r"(\d+[,\.]\d+)\s*€")
+PER_RE = re.compile(r"(\d+[,\.]\d+)\s*€\s*/\s*(kg|l|100\s*g|100\s*ml|ud)", re.IGNORECASE)
+KJ_RE = re.compile(r"(\d+[.,]?\d*)\s*k[jJ]")
+KCAL_RE = re.compile(r"(\d+[.,]?\d*)\s*k?cal", re.IGNORECASE)
+VAL_RE = re.compile(r"(\d+[.,]\d+|\d+)\s*(g|mg)?")
+
+CANONICAL: Dict[str, str] = {
+    "valor energético": "Valor energetico",
+    "valor energetico": "Valor energetico",
+    "energía": "Valor energetico",
+    "energia": "Valor energetico",
+    "calorías": "Valor energetico",
+    "calorias": "Valor energetico",
+    "valor energético en kj": "Valor energetico en KJ",
+    "valor energetico en kj": "Valor energetico en KJ",
+    "grasas": "Grasas",
+    "grasa total": "Grasas",
+    "materia grasa": "Grasas",
+    "lípidos": "Grasas",
+    "lipidos": "Grasas",
+    "ácidos grasos saturados": "Saturadas",
+    "grasas saturadas": "Saturadas",
+    "saturadas": "Saturadas",
+    "de las cuales saturadas": "Saturadas",
+    "- saturadas": "Saturadas",
+    "ácidos grasos monoinsaturados": "Monoinsaturadas",
+    "monoinsaturadas": "Monoinsaturadas",
+    "ácidos grasos poliinsaturados": "Poliinsaturadas",
+    "poliinsaturadas": "Poliinsaturadas",
+    "hidratos de carbono": "Hidratos de carbono",
+    "carbohidratos": "Hidratos de carbono",
+    "azúcares": "Azucares",
+    "azucares": "Azucares",
+    "- azúcares": "Azucares",
+    "- azucares": "Azucares",
+    "de los cuales azúcares": "Azucares",
+    "de los cuales azucares": "Azucares",
+    "polialcoholes": "Polialcoholes",
+    "fibra alimentaria": "Fibra alimentaria",
+    "fibra dietética": "Fibra alimentaria",
+    "fibra": "Fibra alimentaria",
+    "proteínas": "Proteinas",
+    "proteinas": "Proteinas",
+    "sal": "Sal",
+    "sodio": "Sal",
+}
+
+NUTRI_KEYWORDS = [
+    "energético",
+    "energetico",
+    "proteín",
+    "proteina",
+    "grasa",
+    "carbono",
+    "fibra",
+    "kcal",
+    "azúcar",
+]
+
+
 
 # Indica la ruta completa al ejecutable
 pytesseract.pytesseract.tesseract_cmd = r'C:\Program Files\Tesseract-OCR\tesseract.exe'
 
-def celda1(url):
+def sacarinfo(url):
     headers = {
         "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 Chrome/125.0 Safari/537.36",
         "Accept-Language": "es-ES,es;q=0.9",
@@ -41,7 +187,7 @@ def celda1(url):
             if imgs:
                 print(f"  <{tag.name} class='{cls}'> — {len(imgs)} imágenes")
 
-def celda2():
+def imagenes():
     headers = {
         "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 Chrome/125.0 Safari/537.36",
         "Accept-Language": "es-ES,es;q=0.9",
@@ -64,7 +210,7 @@ def celda2():
     for img in soup.select(".carousel-item img"):
         print(f"  alt='{img.get('alt','')}' src={img.get('src','')}")
 
-def celda3():
+def selector():
 
     headers = {
         "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 Chrome/125.0 Safari/537.36",
@@ -107,37 +253,9 @@ def celda3():
 # #########################################################################
 
 
-"""
-acquisition_ahorramas.py
-========================
-Scraper para www.ahorramas.com
-Genera data/raw/ahorramas_products.json con el formato estándar del proyecto.
 
-CÓMO FUNCIONA LA NUTRICIÓN:
-  Ahorramas muestra la tabla nutricional como una IMAGEN en el carrusel del producto.
-  La primera imagen (código C1C1 en la URL) es la foto frontal.
-  La segunda imagen (código EIAh u otro) es la tabla nutricional/ingredientes.
-  Este script descarga TODAS las imágenes del carrusel y aplica OCR a cada una
-  hasta extraer los nutrientes.
-
-REQUISITOS:
-  pip install requests beautifulsoup4 pytesseract Pillow
-  Windows → instalar Tesseract: https://github.com/UB-Mannheim/tesseract/wiki
-            y añadir al PATH, o descomentar la línea tesseract_cmd más abajo.
-"""
-
-import requests
-from bs4 import BeautifulSoup
-import time
-import re
-import json
-import os
-import io
-from typing import List, Dict, Optional
 
 try:
-    import pytesseract
-    from PIL import Image
     OCR_AVAILABLE = True
     # Windows: descomenta y ajusta si tesseract no está en el PATH
     # pytesseract.pytesseract.tesseract_cmd = r'C:\Program Files\Tesseract-OCR\tesseract.exe'
@@ -154,110 +272,6 @@ print(f"OCR disponible: {OCR_AVAILABLE}")
 BASE_DOMAIN = "https://www.ahorramas.com"
 OUTPUT_DIR  = os.path.join("data", "raw")
 OUTPUT_FILE = os.path.join(OUTPUT_DIR, "ahorramas_products.json")
-
-USER_AGENT = (
-    "Mozilla/5.0 (Windows NT 10.0; Win64; x64) "
-    "AppleWebKit/537.36 (KHTML, like Gecko) Chrome/125.0 Safari/537.36"
-)
-HEADERS = {
-    "User-Agent": USER_AGENT,
-    "Accept-Language": "es-ES,es;q=0.9",
-    "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8",
-    "Referer": "https://www.ahorramas.com/",
-}
-
-session = requests.Session()
-session.headers.update(HEADERS)
-
-# ---------------------------------------------------------------------------
-# Categorías
-# ---------------------------------------------------------------------------
-URLS: Dict[str, str] = {
-    "Alimentacion_Ofertas":   "https://www.ahorramas.com/ofertas/alimentacion/",
-    "Bebidas_Ofertas":        "https://www.ahorramas.com/ofertas/bebidas/",
-    "Congelados_Ofertas":     "https://www.ahorramas.com/ofertas/congelados/",
-    "Frescos_Ofertas":        "https://www.ahorramas.com/ofertas/frescos/",
-    "Carniceria":             "https://www.ahorramas.com/frescos/carniceria/",
-    "Pollo":                  "https://www.ahorramas.com/frescos/carniceria/pollo/",
-    "Charcuteria":            "https://www.ahorramas.com/frescos/charcuteria/",
-    "Ternera_y_vacuno":       "https://www.ahorramas.com/frescos/carniceria/ternera-y-vacuno/",
-    "Guisantes_Congelados":   "https://www.ahorramas.com/congelados/verduras-hortalizas-y-frutas-congeladas/guisantes/",
-    "Embutidos_ibericos":     "https://www.ahorramas.com/frescos/charcuteria/embutidos-ibericos/",
-    "Fiambres_y_cocidos":     "https://www.ahorramas.com/frescos/charcuteria/fiambres-y-cocidos/",
-    "Empanados_y_Elaborados": "https://www.ahorramas.com/frescos/carniceria/empanados-y-elaborados/",
-    "Aceite_Oliva_Virgen":    "https://www.ahorramas.com/alimentacion/aceite-vinagre-y-sal/aceites/aceite-de-oliva-virgen-y-virgen-extra/",
-    "Arroz_Redondo":          "https://www.ahorramas.com/alimentacion/arroces-pastas-y-legumbres/arroz/grano-redondo/",
-    "Pasta_Corta":            "https://www.ahorramas.com/alimentacion/arroces-pastas-y-legumbres/pasta/macarrones-y-pasta-corta/",
-    "Legumbres_Lentejas":     "https://www.ahorramas.com/alimentacion/arroces-pastas-y-legumbres/legumbres/lentejas/",
-    "Conservas_Atun":         "https://www.ahorramas.com/alimentacion/conservas-de-pescado/atun/",
-    "Galletas_Maria":         "https://www.ahorramas.com/alimentacion/galletas-cereales-y-barritas/galletas/galletas-maria/",
-    "Cereales_Chocolate":     "https://www.ahorramas.com/alimentacion/galletas-cereales-y-barritas/cereales/cereales-con-chocolate/",
-    "Cafe_Capsulas":          "https://www.ahorramas.com/alimentacion/cacao-cafes-e-infusiones/cafes/capsulas-de-cafe/",
-    "Quesos_Semicurados":     "https://www.ahorramas.com/frescos/quesos/quesos-semicurados/",
-    "Pescado_Blanco":         "https://www.ahorramas.com/frescos/pescado-y-mariscos/merluza-y-otro-pescado-blanco/",
-    "Huevos_Camperos":        "https://www.ahorramas.com/frescos/huevos/camperos-y-ecologicos/",
-    "Refrescos_Cola":         "https://www.ahorramas.com/bebidas/refrescos/de-cola/",
-    "Cervezas_Rubias":        "https://www.ahorramas.com/bebidas/cerveza/cervezas-rubias/",
-    "Zumos_Naranja":          "https://www.ahorramas.com/bebidas/zumos/naranja/",
-    "Pizzas_Congeladas":      "https://www.ahorramas.com/congelados/pizzas-y-baguettes/pizzas/",
-    "Helados_Bombon":         "https://www.ahorramas.com/congelados/helados/helado-bombon/",
-}
-
-# ---------------------------------------------------------------------------
-# Helpers
-# ---------------------------------------------------------------------------
-QTY_RE   = re.compile(r"(\d+(?:[.,]\d+)?)\s*(kg|g|l|ml|cl|ud|uds)\b", re.IGNORECASE)
-PRICE_RE = re.compile(r"(\d+[,\.]\d+)\s*€")
-PER_RE   = re.compile(r"(\d+[,\.]\d+)\s*€\s*/\s*(kg|l|100\s*g|100\s*ml|ud)", re.IGNORECASE)
-KJ_RE    = re.compile(r"(\d+[.,]?\d*)\s*k[jJ]")
-KCAL_RE  = re.compile(r"(\d+[.,]?\d*)\s*k?cal", re.IGNORECASE)
-VAL_RE   = re.compile(r"(\d+[.,]\d+|\d+)\s*(g|mg)?")
-
-CANONICAL: Dict[str, str] = {
-    "valor energético":              "Valor energetico",
-    "valor energetico":              "Valor energetico",
-    "energía":                       "Valor energetico",
-    "energia":                       "Valor energetico",
-    "calorías":                      "Valor energetico",
-    "calorias":                      "Valor energetico",
-    "valor energético en kj":        "Valor energetico en KJ",
-    "valor energetico en kj":        "Valor energetico en KJ",
-    "grasas":                        "Grasas",
-    "grasa total":                   "Grasas",
-    "materia grasa":                 "Grasas",
-    "lípidos":                       "Grasas",
-    "lipidos":                       "Grasas",
-    "ácidos grasos saturados":       "Saturadas",
-    "grasas saturadas":              "Saturadas",
-    "saturadas":                     "Saturadas",
-    "de las cuales saturadas":       "Saturadas",
-    "- saturadas":                   "Saturadas",
-    "ácidos grasos monoinsaturados": "Monoinsaturadas",
-    "monoinsaturadas":               "Monoinsaturadas",
-    "ácidos grasos poliinsaturados": "Poliinsaturadas",
-    "poliinsaturadas":               "Poliinsaturadas",
-    "hidratos de carbono":           "Hidratos de carbono",
-    "carbohidratos":                 "Hidratos de carbono",
-    "azúcares":                      "Azucares",
-    "azucares":                      "Azucares",
-    "- azúcares":                    "Azucares",
-    "- azucares":                    "Azucares",
-    "de los cuales azúcares":        "Azucares",
-    "de los cuales azucares":        "Azucares",
-    "polialcoholes":                 "Polialcoholes",
-    "fibra alimentaria":             "Fibra alimentaria",
-    "fibra dietética":               "Fibra alimentaria",
-    "fibra":                         "Fibra alimentaria",
-    "proteínas":                     "Proteinas",
-    "proteinas":                     "Proteinas",
-    "sal":                           "Sal",
-    "sodio":                         "Sal",
-}
-
-NUTRI_KEYWORDS = [
-    "energético", "energetico", "proteín", "proteina",
-    "grasa", "carbono", "fibra", "kcal", "azúcar"
-]
 
 
 def _norm(t: str) -> str:
@@ -379,7 +393,7 @@ def _get_carousel_image_urls(soup: BeautifulSoup) -> List[str]:
     return urls
 
 
-def nutrition_from_ocr(soup: BeautifulSoup) -> Dict[str, str]:
+def nutrition_from_ocr(soup: BeautifulSoup, session: requests.Session) -> Dict[str, str]:
     """
     Descarga TODAS las imágenes del carrusel y aplica OCR a cada una.
     La primera imagen (C1C1) es la foto del producto — normalmente sin texto nutricional.
@@ -467,13 +481,13 @@ def _nutrition_from_dl(soup: BeautifulSoup) -> Dict[str, str]:
     return nutrients
 
 
-def parse_nutrition(soup: BeautifulSoup) -> Dict[str, str]:
+def parse_nutrition(soup: BeautifulSoup, session: requests.Session) -> Dict[str, str]:
     """Cascada: JSON-LD → tabla HTML → dl → OCR sobre imágenes del carrusel."""
     for fn in [
         lambda: _nutrition_from_jsonld(soup),
         lambda: _nutrition_from_table(soup),
         lambda: _nutrition_from_dl(soup),
-        lambda: nutrition_from_ocr(soup),
+        lambda: nutrition_from_ocr(soup, session),
     ]:
         result = fn()
         if result:
@@ -591,7 +605,7 @@ def parse_direccion_manufactura(soup: BeautifulSoup) -> List[str]:
 # Crawler
 # ---------------------------------------------------------------------------
 
-def fetch_html(url: str, retries: int = 3) -> str:
+def fetch_html(url: str, session: requests.Session, retries: int = 3) -> str:
     for attempt in range(retries):
         try:
             resp = session.get(url, timeout=20)
@@ -649,14 +663,14 @@ def crawl(base_url: str, delay: float = 1.5) -> List[str]:
 # Parser principal
 # ---------------------------------------------------------------------------
 
-def parse_product(html: str, url: str, category: str) -> Dict:
+def parse_product(html: str, url: str, category: str, session: requests.Session) -> Dict:
     soup = BeautifulSoup(html, "html.parser")
     text_all = soup.get_text(" ", strip=True)
     titulo = parse_titulo(soup)
     return {
         "url":                         url,
         "titulo":                      titulo,
-        "valores_nutricionales_100_g": parse_nutrition(soup),
+        "valores_nutricionales_100_g": parse_nutrition(soup, session),
         "descripcion":                 parse_descripcion(soup),
         "categorias":                  [category.lower()],
         "precio_total":                parse_precio(soup, text_all),
@@ -668,10 +682,10 @@ def parse_product(html: str, url: str, category: str) -> Dict:
     }
 
 
-def scrape_product(url: str, category: str) -> Optional[Dict]:
+def scrape_product(url: str, category: str, session: requests.Session) -> Optional[Dict]:
     try:
-        html = fetch_html(url)
-        return parse_product(html, url, category)
+        html = fetch_html(url, session)
+        return parse_product(html, url, category, session)
     except Exception as e:
         print(f"    ERROR scrapeando {url}: {e}")
         return None
@@ -682,6 +696,20 @@ def scrape_product(url: str, category: str) -> Optional[Dict]:
 # ---------------------------------------------------------------------------
 
 def main() -> List[Dict]:
+    
+    USER_AGENT = (
+        "Mozilla/5.0 (Windows NT 10.0; Win64; x64) "
+        "AppleWebKit/537.36 (KHTML, like Gecko) Chrome/125.0 Safari/537.36"
+    )
+    HEADERS = {
+        "User-Agent": USER_AGENT,
+        "Accept-Language": "es-ES,es;q=0.9",
+        "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8",
+        "Referer": "https://www.ahorramas.com/",
+    }
+    session = requests.Session()
+    session.headers.update(HEADERS)
+
     os.makedirs(OUTPUT_DIR, exist_ok=True)
 
     print("\n" + "=" * 60)
@@ -711,7 +739,7 @@ def main() -> List[Dict]:
                 continue
             seen_urls.add(url)
             print(f"  ({i}/{len(url_list)}) {url}")
-            product = scrape_product(url, category)
+            product = scrape_product(url, category, session)
             if product:
                 products.append(product)
                 nuts = product["valores_nutricionales_100_g"]
@@ -756,7 +784,7 @@ def main() -> List[Dict]:
 
 
 if __name__ == "__main__":
-    celda1()
-    celda2()
-    celda3()
+    sacarinfo()
+    imagenes()
+    selector()
     main()
