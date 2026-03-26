@@ -750,7 +750,7 @@ def main() -> List[Dict]:
                 if missing:
                     print(f"    ⚠ Faltantes: {missing}")
                 else:
-                    print(f"    ✅ {list(nuts.keys())}")
+                    print(f"     {list(nuts.keys())}")
             else:
                 errors += 1
             time.sleep(0.9)
@@ -763,10 +763,10 @@ def main() -> List[Dict]:
         json.dump(products, f, ensure_ascii=False, indent=2)
 
     total_ok = sum(1 for p in products if p["valores_nutricionales_100_g"])
-    print(f"\n✅ Productos scrapeados:        {len(products)}")
-    print(f"🥗 Con información nutricional: {total_ok} ({total_ok/max(len(products),1)*100:.0f}%)")
-    print(f"❌ Errores:                      {errors}")
-    print(f"📁 JSON guardado en:             {OUTPUT_FILE}")
+    print(f"\n Productos scrapeados:        {len(products)}")
+    print(f" Con información nutricional: {total_ok} ({total_ok/max(len(products),1)*100:.0f}%)")
+    print(f" Errores:                      {errors}")
+    print(f" JSON guardado en:             {OUTPUT_FILE}")
 
     from collections import Counter
     print("\nResumen por categoría:")

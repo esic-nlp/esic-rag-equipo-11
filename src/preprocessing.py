@@ -1,272 +1,566 @@
-"""
-preprocessing.py
-================
-Limpia, transforma y enriquece los datos de ahorramas_products.json
-para su uso en el pipeline RAG.
-
-Entrada:  src/data/raw/ahorramas_products.json
-Salida:   src/data/clean/products_clean.csv
-          src/data/clean/products_clean.json
-
-Uso:
-    python preprocessing.py
-    o desde otro módulo:
-        from src.preprocessing import procesar_datos
-        df = procesar_datos()
-"""
-
 import json
 import os
 import re
-import pandas as pd
+import unicodedata
+from typing import Any, Dict, List, Optional
+
 import numpy as np
-from typing import Optional
-
-# ---------------------------------------------------------------------------
-# Rutas — relativas a la ubicación de este script (src/)
-# ---------------------------------------------------------------------------
-BASE_DIR    = os.path.dirname(os.path.abspath(__file__))
-INPUT_FILE  = os.path.join(BASE_DIR, "data", "raw", "ahorramas_products.json")
-OUTPUT_DIR  = os.path.join(BASE_DIR, "data", "clean")
-OUTPUT_CSV  = os.path.join(OUTPUT_DIR, "products_clean.csv")
-OUTPUT_JSON = os.path.join(OUTPUT_DIR, "products_clean.json")
-
-# ---------------------------------------------------------------------------
-# Helpers
-# ---------------------------------------------------------------------------
-
-def _to_float(value) -> Optional[float]:
-    """'6,7 g' | '537 kcal' | 30.4 | None  →  float o None"""
-    if value is None:
-        return None
-    if isinstance(value, (int, float)):
-        return float(value) if not (isinstance(value, float) and np.isnan(value)) else None
-    m = re.search(r"(\d+[.,]\d+|\d+)", str(value).replace(",", "."))
-    return float(m.group(1)) if m else None
+import pandas as pd
 
 
-def _clean_text(text) -> str:
-    if not text:
-        return ""
-    text = str(text).lower().strip()
-    text = re.sub(r"\s+", " ", text)
-    text = re.sub(r"[^\w\sáéíóúüñ,.()/%-]", "", text)
-    return text
+# ============================================================================
+# CONFIGURACION GENERAL
+# ============================================================================
+# En esta sección se definen las rutas de entrada y salida del proceso.
+# El script leerá el archivo JSON generado en la fase de adquisición y
+# guardará el resultado ya procesado en la carpeta data/clean.
+#
+# INPUT_FILE:
+#   Archivo crudo generado por el scraper.
+#
+# OUTPUT_FILE:
+#   Archivo final limpio y transformado, listo para utilizarse en el sistema
+#   de recuperación de información o en cualquier pipeline posterior.
+# ============================================================================
 
-# ---------------------------------------------------------------------------
-# Mapa de claves del JSON → columna destino
-# ---------------------------------------------------------------------------
-NUTRIENT_MAP = {
-    "calorias":      ["Valor energetico", "Energía", "Calorías"],
-    "calorias_kj":   ["Valor energetico en KJ"],
-    "grasas":        ["Grasas", "Grasa total"],
-    "saturadas":     ["Saturadas", "Ácidos grasos saturados"],
-    "carbohidratos": ["Hidratos de carbono", "Carbohidratos"],
-    "azucares":      ["Azucares", "Azúcares"],
-    "fibra":         ["Fibra alimentaria", "Fibra dietética", "Fibra"],
-    "proteinas":     ["Proteinas", "Proteínas"],
-    "sal":           ["Sal", "Sodio"],
-}
+INPUT_FILE = os.path.join("data", "raw", "ahorramas_products.json")
+OUTPUT_DIR = os.path.join("data", "clean")
+OUTPUT_FILE = os.path.join(OUTPUT_DIR, "ahorramas_products_clean.csv")
 
-# ---------------------------------------------------------------------------
-# Carga
-# ---------------------------------------------------------------------------
 
-def load_raw(path: str = INPUT_FILE) -> pd.DataFrame:
-    print(f"📂 Cargando: {path}")
-    with open(path, "r", encoding="utf-8") as f:
-        data = json.load(f)
-    df = pd.DataFrame(data)
-    print(f"   Registros cargados: {len(df)}")
-    return df
+# ============================================================================
+# COLUMNAS FINALES
+# ============================================================================
+# Estas son las columnas que tendrá el DataFrame final.
+# Se incluyen los datos nutricionales principales, el texto de búsqueda para
+# embeddings, las variables normalizadas y el score nutricional agregado.
+#
+# También se conserva la categoría principal para que el dataset sea más fácil
+# de analizar, depurar y reutilizar después.
+# ============================================================================
 
-# ---------------------------------------------------------------------------
-# Extracción de nutrientes
-# ---------------------------------------------------------------------------
-
-def extract_nutrients(df: pd.DataFrame) -> pd.DataFrame:
-    """Convierte valores_nutricionales_100_g (dict) en columnas float."""
-    nutri_col = "valores_nutricionales_100_g"
-    if nutri_col not in df.columns:
-        df[nutri_col] = [{} for _ in range(len(df))]
-
-    def _get(d: dict, keys: list):
-        if not isinstance(d, dict):
-            return None
-        for k in keys:
-            if k in d:
-                return _to_float(d[k])
-        return None
-
-    for col_name, keys in NUTRIENT_MAP.items():
-        df[col_name] = df[nutri_col].apply(lambda d: _get(d, keys))
-
-    return df
-
-# ---------------------------------------------------------------------------
-# Limpieza
-# ---------------------------------------------------------------------------
-
-def clean(df: pd.DataFrame) -> pd.DataFrame:
-    print("\n🧹 LIMPIEZA")
-    n0 = len(df)
-
-    df = extract_nutrients(df)
-
-    df = df.rename(columns={
-        "precio_total":        "precio",
-        "precio_por_cantidad": "precio_por_kg",
-    })
-
-    for col in ["precio", "precio_por_kg", "calorias", "calorias_kj",
-                "grasas", "saturadas", "carbohidratos", "azucares",
-                "fibra", "proteinas", "sal"]:
-        if col in df.columns:
-            df[col] = pd.to_numeric(df[col], errors="coerce")
-
-    df = df.dropna(subset=["titulo", "precio"])
-    print(f"   Eliminadas sin titulo/precio: {n0 - len(df)}")
-
-    n1 = len(df)
-    df = df.drop_duplicates(subset=["url"], keep="first")
-    df = df.drop_duplicates(subset=["titulo"], keep="first")
-    print(f"   Duplicados eliminados: {n1 - len(df)}")
-
-    df["titulo"]      = df["titulo"].apply(_clean_text)
-    df["descripcion"] = df.get("descripcion", pd.Series("", index=df.index)).fillna("").apply(_clean_text)
-    df["categoria"]   = df["categorias"].apply(
-        lambda x: x[0] if isinstance(x, list) and x else "otros"
-    )
-
-    print(f"   Registros tras limpieza: {len(df)}")
-    return df.reset_index(drop=True)
-
-# ---------------------------------------------------------------------------
-# Normalización
-# ---------------------------------------------------------------------------
-
-def normalize(df: pd.DataFrame) -> pd.DataFrame:
-    print("\n📐 NORMALIZACIÓN")
-
-    df["texto_busqueda"] = (
-        df["titulo"].fillna("") + " " +
-        df["categoria"].fillna("") + " " +
-        df["descripcion"].fillna("")
-    ).str.strip().apply(_clean_text)
-
-    p = df["precio"]
-    p_min, p_max = p.min(), p.max()
-    df["norm_precio"] = (1 - (p - p_min) / (p_max - p_min)).round(4) if p_max > p_min else 0.5
-
-    prot        = df["proteinas"].fillna(0)
-    precio_safe = df["precio"].replace(0, np.nan)
-    prot_per_eur = prot / precio_safe
-    mn, mx = prot_per_eur.min(), prot_per_eur.max()
-    df["norm_nutri"] = ((prot_per_eur - mn) / (mx - mn)).round(4).fillna(0) if mx > mn else 0.0
-
-    print("   ✅ texto_busqueda, norm_precio, norm_nutri creados")
-    return df
-
-# ---------------------------------------------------------------------------
-# Score nutricional
-# ---------------------------------------------------------------------------
-
-SCORE_WEIGHTS = {
-    "proteinas":     +0.35,
-    "fibra":         +0.20,
-    "carbohidratos": -0.15,
-    "grasas":        -0.15,
-    "azucares":      -0.15,
-}
-
-def enrich(df: pd.DataFrame) -> pd.DataFrame:
-    print("\n✨ ENRIQUECIMIENTO")
-
-    for col in SCORE_WEIGHTS:
-        col_data = df[col].fillna(0)
-        mn, mx = col_data.min(), col_data.max()
-        df[f"_pct_{col}"] = (col_data - mn) / (mx - mn) if mx > mn else 0.5
-
-    def _score(row) -> float:
-        s = 0.0
-        for col, w in SCORE_WEIGHTS.items():
-            pct = row.get(f"_pct_{col}", 0.5)
-            s += w * pct * 100 if w > 0 else w * (1 - pct) * 100
-        return round(max(0.0, min(100.0, s)), 2)
-
-    df["score_nutricional"] = df.apply(_score, axis=1)
-    df = df.drop(columns=[f"_pct_{c}" for c in SCORE_WEIGHTS])
-
-    print(f"   ✅ score_nutricional — "
-          f"min={df['score_nutricional'].min():.1f} | "
-          f"media={df['score_nutricional'].mean():.1f} | "
-          f"max={df['score_nutricional'].max():.1f}")
-    return df
-
-# ---------------------------------------------------------------------------
-# Columnas finales
-# ---------------------------------------------------------------------------
-
-FINAL_COLS = [
-    "url", "titulo", "categoria", "origen",
-    "precio", "precio_por_kg", "peso_volumen",
-    "proteinas", "carbohidratos", "grasas", "fibra",
-    "azucares", "saturadas", "sal", "calorias", "calorias_kj",
-    "texto_busqueda", "norm_precio", "norm_nutri", "score_nutricional",
+OUTPUT_COLUMNS = [
+    "titulo",
+    "precio",
+    "proteinas",
+    "carbohidratos",
+    "grasas",
+    "fibra",
+    "calories",
+    "texto_busqueda",
+    "norm_precio",
+    "norm_nutri",
+    "score_nutricional",
+    "categoria_principal",
 ]
 
-def select_columns(df: pd.DataFrame) -> pd.DataFrame:
-    return df[[c for c in FINAL_COLS if c in df.columns]]
 
-# ---------------------------------------------------------------------------
-# Guardado
-# ---------------------------------------------------------------------------
+# ============================================================================
+# CARGA DEL JSON
+# ============================================================================
+# Esta función carga el archivo JSON crudo generado por el scraper.
+# Se comprueba que el contenido sea una lista de productos, ya que ese es
+# el formato esperado para poder construir el DataFrame posterior.
+# ============================================================================
 
-def save(df: pd.DataFrame) -> None:
-    os.makedirs(OUTPUT_DIR, exist_ok=True)
-    df.to_csv(OUTPUT_CSV, index=False, encoding="utf-8")
-    print(f"   📁 CSV:  {OUTPUT_CSV}")
-    df.to_json(OUTPUT_JSON, orient="records", force_ascii=False, indent=2)
-    print(f"   📁 JSON: {OUTPUT_JSON}")
+def load_raw_json(path: str) -> List[Dict[str, Any]]:
+    with open(path, "r", encoding="utf-8") as f:
+        data = json.load(f)
 
-# ---------------------------------------------------------------------------
-# Función pública para main.py
-# ---------------------------------------------------------------------------
+    if not isinstance(data, list):
+        raise ValueError("El archivo JSON debe contener una lista de productos.")
 
-def procesar_datos(input_path: str = INPUT_FILE) -> pd.DataFrame:
-    """
-    Pipeline completo: carga → limpieza → normalización → enriquecimiento.
-    Devuelve el DataFrame limpio y lo guarda en src/data/clean/.
-    """
-    print("=" * 60)
-    print("PREPROCESSING — Pipeline RAG Ahorramas")
-    print("=" * 60)
+    return data
 
-    df = load_raw(input_path)
-    df = clean(df)
-    df = normalize(df)
-    df = enrich(df)
-    df = select_columns(df)
 
-    print("\n📊 RESUMEN FINAL")
-    print(f"   Productos totales:            {len(df)}")
-    print(f"   Con nutrición completa:       "
-          f"{df[['proteinas','carbohidratos','grasas']].notna().all(axis=1).sum()}")
-    print(f"   Columnas: {list(df.columns)}")
+# ============================================================================
+# NORMALIZACION DE TEXTO
+# ============================================================================
+# Esta función se utiliza para limpiar y uniformar cualquier campo textual.
+# Convierte el texto a minúsculas, elimina acentos y normaliza espacios.
+#
+# Esto es especialmente útil para:
+# - evitar inconsistencias entre registros
+# - mejorar la calidad del texto de búsqueda
+# - facilitar comparaciones y agrupaciones
+# ============================================================================
 
-    print("\n💾 GUARDANDO")
-    save(df)
+def normalize_text(text: Any) -> str:
+    if text is None:
+        return ""
 
-    print("\n✅ Preprocessing completado.")
-    print(df[["titulo", "precio", "proteinas", "carbohidratos",
-              "grasas", "score_nutricional", "norm_precio", "norm_nutri"]].head(8).to_string())
+    text = str(text).strip().lower()
+    text = unicodedata.normalize("NFKD", text).encode("ascii", "ignore").decode("utf-8")
+    text = re.sub(r"\s+", " ", text)
+    return text
+
+
+# ============================================================================
+# EXTRACCION DE NUMEROS
+# ============================================================================
+# Muchos valores procedentes del scraper llegan como texto, por ejemplo:
+# "12 g", "3,5 g", "1,99 €" o "250 kcal".
+#
+# Esta función extrae la parte numérica y la convierte a float para poder
+# trabajar después con operaciones matemáticas y estadísticas.
+# Si no se puede extraer un número válido, devuelve NaN.
+# ============================================================================
+
+def extract_number(value: Any) -> Optional[float]:
+    if value is None:
+        return np.nan
+
+    if isinstance(value, (int, float)):
+        return float(value)
+
+    text = str(value).strip().lower().replace(",", ".")
+    match = re.search(r"[-+]?\d*\.?\d+", text)
+
+    if match:
+        try:
+            return float(match.group())
+        except ValueError:
+            return np.nan
+
+    return np.nan
+
+
+# ============================================================================
+# EXTRACCION DE NUTRIENTES
+# ============================================================================
+# Los valores nutricionales vienen almacenados dentro de un diccionario.
+# Esta función permite buscar un nutriente concreto probando varias posibles
+# claves, ya que en algunos casos puede haber pequeñas variaciones de nombre.
+#
+# Si encuentra el nutriente, devuelve su valor numérico.
+# Si no lo encuentra, devuelve NaN.
+# ============================================================================
+
+def get_nutrient(nutrients: Dict[str, Any], possible_keys: List[str]) -> Optional[float]:
+    if not isinstance(nutrients, dict):
+        return np.nan
+
+    for key in possible_keys:
+        if key in nutrients:
+            return extract_number(nutrients.get(key))
+
+    return np.nan
+
+
+# ============================================================================
+# EXTRACCION DE MARCA
+# ============================================================================
+# Como el JSON original no siempre trae una columna de marca separada,
+# se toma una aproximación sencilla: usar la primera palabra del título
+# como posible marca.
+#
+# No es perfecto, pero resulta útil para enriquecer el campo
+# texto_busqueda cuando no existe una marca explícita.
+# ============================================================================
+
+def extract_brand_from_title(title: str) -> str:
+    if not title:
+        return ""
+
+    words = str(title).strip().split()
+    if not words:
+        return ""
+
+    return words[0].lower()
+
+
+# ============================================================================
+# MAPEO DE CATEGORIA PRINCIPAL
+# ============================================================================
+# Las categorías originales del scraper son muy específicas, por ejemplo:
+# "pasta_corta", "arroz_redondo", "quesos_semicurados".
+#
+# Para poder imputar valores faltantes de forma más coherente, se agrupan
+# en categorías principales más generales, como:
+# pasta, arroz, carne, bebidas, congelados, quesos, etc.
+#
+# Esta agrupación permite calcular medianas más realistas entre productos
+# similares y evita mezclar alimentos de naturaleza muy distinta.
+# ============================================================================
+
+def map_main_category(raw_category: str) -> str:
+    raw_category = normalize_text(raw_category)
+
+    if "pasta" in raw_category:
+        return "pasta"
+    if "arroz" in raw_category:
+        return "arroz"
+    if "legumbre" in raw_category or "lenteja" in raw_category:
+        return "legumbres"
+    if "aceite" in raw_category:
+        return "aceites"
+    if "atun" in raw_category or "pescado" in raw_category or "marisco" in raw_category:
+        return "pescado"
+    if "queso" in raw_category:
+        return "quesos"
+    if "huevo" in raw_category:
+        return "huevos"
+    if "refresco" in raw_category or "zumo" in raw_category or "bebida" in raw_category:
+        return "bebidas"
+    if "cerveza" in raw_category:
+        return "bebidas"
+    if "helado" in raw_category or "pizza" in raw_category or "congelado" in raw_category:
+        return "congelados"
+    if "carniceria" in raw_category or "ternera" in raw_category or "pollo" in raw_category:
+        return "carne"
+    if "charcuteria" in raw_category or "embutido" in raw_category or "fiambre" in raw_category:
+        return "charcuteria"
+    if "galleta" in raw_category or "cereal" in raw_category:
+        return "desayuno_snacks"
+    if "cafe" in raw_category:
+        return "cafe_infusiones"
+    if "alimentacion_ofertas" in raw_category:
+        return "alimentacion_general"
+    if "frescos_ofertas" in raw_category:
+        return "frescos"
+    if "bebidas_ofertas" in raw_category:
+        return "bebidas"
+    if "congelados_ofertas" in raw_category:
+        return "congelados"
+
+    return "otros"
+
+
+# ============================================================================
+# TEXTO DE BUSQUEDA
+# ============================================================================
+# Esta función construye la columna texto_busqueda, que es una concatenación
+# de la información más relevante de cada producto:
+# - título
+# - marca
+# - descripción
+# - categoría principal
+#
+# El objetivo es disponer de un texto compacto pero rico semánticamente,
+# que pueda utilizarse después para generar embeddings en el sistema RAG.
+# ============================================================================
+
+def build_texto_busqueda(row: pd.Series) -> str:
+    parts = [
+        normalize_text(row.get("titulo", "")),
+        normalize_text(row.get("marca", "")),
+        normalize_text(row.get("descripcion", "")),
+        normalize_text(row.get("categoria_principal", "")),
+    ]
+
+    text = " ".join(part for part in parts if part)
+    text = re.sub(r"\s+", " ", text).strip()
+    return text
+
+
+# ============================================================================
+# NORMALIZACION INVERSA DEL PRECIO
+# ============================================================================
+# Esta función aplica una normalización min-max inversa sobre el precio.
+#
+# El resultado queda entre 0 y 1, pero con una lógica invertida:
+# - los productos más baratos obtienen valores más altos
+# - los productos más caros obtienen valores más bajos
+#
+# Esto es útil cuando se quiere priorizar productos económicos dentro de un
+# sistema de ranking o recomendación.
+# ============================================================================
+
+def normalize_inverse_minmax(series: pd.Series) -> pd.Series:
+    series = series.astype(float)
+    min_val = series.min()
+    max_val = series.max()
+
+    if pd.isna(min_val) or pd.isna(max_val):
+        return pd.Series([np.nan] * len(series), index=series.index)
+
+    if max_val == min_val:
+        return pd.Series([1.0] * len(series), index=series.index)
+
+    return (max_val - series) / (max_val - min_val)
+
+
+# ============================================================================
+# NORMALIZACION DEL CONTENIDO PROTEICO
+# ============================================================================
+# Esta función transforma la variable proteínas a una escala entre 0 y 100.
+#
+# Se utiliza la proteína como referencia principal de calidad nutricional
+# porque es un macronutriente especialmente relevante en el contexto del
+# proyecto y resulta útil para comparar alimentos de forma sencilla.
+# ============================================================================
+
+def normalize_protein_to_100(series: pd.Series) -> pd.Series:
+    series = series.astype(float)
+    min_val = series.min()
+    max_val = series.max()
+
+    if pd.isna(min_val) or pd.isna(max_val):
+        return pd.Series([np.nan] * len(series), index=series.index)
+
+    if max_val == min_val:
+        return pd.Series([100.0] * len(series), index=series.index)
+
+    return ((series - min_val) / (max_val - min_val)) * 100.0
+
+
+# ============================================================================
+# SCORE NUTRICIONAL
+# ============================================================================
+# Esta función calcula una puntuación nutricional agregada basada en varios
+# macronutrientes y calorías.
+#
+# La lógica utilizada es:
+# - más proteínas aumenta la puntuación
+# - más fibra aumenta la puntuación
+# - más grasas penaliza la puntuación
+# - más carbohidratos penaliza ligeramente la puntuación
+# - más calorías también penaliza
+#
+# Finalmente, el score se reescala entre 0 y 100 para que resulte más fácil
+# de interpretar y comparar entre productos.
+# ============================================================================
+
+def compute_score_nutricional(df: pd.DataFrame) -> pd.Series:
+    proteinas = df["proteinas"].fillna(0)
+    fibra = df["fibra"].fillna(0)
+    grasas = df["grasas"].fillna(0)
+    carbohidratos = df["carbohidratos"].fillna(0)
+    calories = df["calories"].fillna(0)
+
+    score = (
+        proteinas * 4.0
+        + fibra * 3.0
+        - grasas * 1.5
+        - carbohidratos * 0.3
+        - (calories / 50.0)
+    )
+
+    score = score.clip(lower=0)
+
+    min_val = score.min()
+    max_val = score.max()
+
+    if max_val == min_val:
+        return pd.Series([100.0] * len(df), index=df.index)
+
+    score_scaled = ((score - min_val) / (max_val - min_val)) * 100.0
+    return score_scaled.round(2)
+
+
+# ============================================================================
+# IMPUTACION POR MEDIANA SEGUN CATEGORIA
+# ============================================================================
+# Esta función rellena los valores faltantes de determinadas columnas
+# numéricas utilizando la mediana de su categoría principal.
+#
+# Por ejemplo:
+# - si a una pasta le faltan proteínas, se usa la mediana de proteínas
+#   del resto de productos de la categoría pasta
+# - si no hay suficientes datos en esa categoría, se usa la mediana global
+#
+# Este enfoque es más coherente que imputar con una media o mediana global
+# desde el principio, ya que respeta mejor las diferencias naturales entre
+# tipos de alimentos.
+# ============================================================================
+
+def impute_by_category_median(df: pd.DataFrame, cols: List[str], category_col: str) -> pd.DataFrame:
+    df = df.copy()
+
+    for col in cols:
+        category_medians = df.groupby(category_col)[col].median()
+        global_median = df[col].median()
+
+        df[col] = df.apply(
+            lambda row: (
+                row[col]
+                if pd.notna(row[col])
+                else category_medians.get(row[category_col], np.nan)
+            ),
+            axis=1,
+        )
+
+        if pd.notna(global_median):
+            df[col] = df[col].fillna(global_median)
 
     return df
 
 
-# ---------------------------------------------------------------------------
-# Main
-# ---------------------------------------------------------------------------
+# ============================================================================
+# PREPROCESAMIENTO PRINCIPAL
+# ============================================================================
+# Esta es la función central del script. Se encarga de:
+#
+# 1. transformar el JSON crudo en un DataFrame
+# 2. extraer las variables más relevantes
+# 3. limpiar textos y valores numéricos
+# 4. eliminar duplicados
+# 5. imputar valores faltantes por categoría
+# 6. crear variables enriquecidas y normalizadas
+# 7. devolver el DataFrame final listo para guardar
+#
+# Es la parte principal de la fase de preprocessing del proyecto.
+# ============================================================================
+
+def preprocess_products(raw_data: List[Dict[str, Any]]) -> pd.DataFrame:
+    rows = []
+
+    for product in raw_data:
+        nutrients = product.get("valores_nutricionales_100_g", {})
+        categorias = product.get("categorias", [])
+
+        categoria_raw = categorias[0] if isinstance(categorias, list) and categorias else ""
+
+        titulo = product.get("titulo", "")
+        descripcion = product.get("descripcion", "")
+        marca = extract_brand_from_title(titulo)
+
+        row = {
+            "titulo": titulo,
+            "descripcion": descripcion,
+            "marca": marca,
+            "precio": extract_number(product.get("precio_total")),
+            "proteinas": get_nutrient(nutrients, ["Proteinas"]),
+            "carbohidratos": get_nutrient(nutrients, ["Hidratos de carbono"]),
+            "grasas": get_nutrient(nutrients, ["Grasas"]),
+            "fibra": get_nutrient(nutrients, ["Fibra alimentaria"]),
+            "calories": get_nutrient(nutrients, ["Valor energetico"]),
+            "categoria": categoria_raw,
+            "categoria_principal": map_main_category(categoria_raw),
+            "url": product.get("url", ""),
+        }
+
+        rows.append(row)
+
+    df = pd.DataFrame(rows)
+
+    # ------------------------------------------------------------------------
+    # Limpieza y normalización de textos
+    # ------------------------------------------------------------------------
+    # Se aplica la función de limpieza textual a las columnas de texto para
+    # evitar inconsistencias y dejar los valores en un formato homogéneo.
+    # ------------------------------------------------------------------------
+    df["titulo"] = df["titulo"].apply(normalize_text)
+    df["descripcion"] = df["descripcion"].apply(normalize_text)
+    df["marca"] = df["marca"].apply(normalize_text)
+    df["categoria"] = df["categoria"].apply(normalize_text)
+    df["categoria_principal"] = df["categoria_principal"].apply(normalize_text)
+
+    # ------------------------------------------------------------------------
+    # Conversión a numérico
+    # ------------------------------------------------------------------------
+    # Las columnas nutricionales y de precio se convierten a formato numérico
+    # para permitir operaciones estadísticas y cálculos posteriores.
+    # ------------------------------------------------------------------------
+    numeric_cols = ["precio", "proteinas", "carbohidratos", "grasas", "fibra", "calories"]
+    for col in numeric_cols:
+        df[col] = pd.to_numeric(df[col], errors="coerce")
+
+    # ------------------------------------------------------------------------
+    # Eliminación de duplicados
+    # ------------------------------------------------------------------------
+    # Se eliminan filas repetidas usando como referencia el título, el precio
+    # y la URL, ya que esa combinación identifica razonablemente a un producto.
+    # ------------------------------------------------------------------------
+    df = df.drop_duplicates(subset=["titulo", "precio", "url"]).copy()
+
+    # ------------------------------------------------------------------------
+    # Eliminación de filas con faltantes críticos
+    # ------------------------------------------------------------------------
+    # Solo se eliminan productos que no tienen título o precio, porque son
+    # campos esenciales. Los nutrientes faltantes no se eliminan todavía,
+    # ya que después serán imputados mediante medianas por categoría.
+    # ------------------------------------------------------------------------
+    df = df.dropna(subset=["titulo", "precio"]).copy()
+    df = df[df["titulo"] != ""].copy()
+    df = df[df["precio"] > 0].copy()
+
+    # ------------------------------------------------------------------------
+    # Imputación de nutrientes faltantes por categoría principal
+    # ------------------------------------------------------------------------
+    # En este paso se rellenan los valores faltantes de proteínas,
+    # carbohidratos, grasas, fibra y calorías utilizando la mediana de
+    # productos similares dentro de la misma categoría principal.
+    # ------------------------------------------------------------------------
+    df = impute_by_category_median(
+        df,
+        cols=["proteinas", "carbohidratos", "grasas", "fibra", "calories"],
+        category_col="categoria_principal",
+    )
+
+    # ------------------------------------------------------------------------
+    # Construcción del texto de búsqueda
+    # ------------------------------------------------------------------------
+    # Se crea una columna con toda la información textual relevante del
+    # producto, que posteriormente podrá usarse para embeddings y búsqueda
+    # semántica dentro del sistema RAG.
+    # ------------------------------------------------------------------------
+    df["texto_busqueda"] = df.apply(build_texto_busqueda, axis=1)
+
+    # ------------------------------------------------------------------------
+    # Normalizaciones y score nutricional
+    # ------------------------------------------------------------------------
+    # Se calculan tres variables nuevas:
+    # - norm_precio: prioriza los productos más baratos
+    # - norm_nutri: escala de proteínas de 0 a 100
+    # - score_nutricional: indicador agregado basado en macronutrientes
+    # ------------------------------------------------------------------------
+    df["norm_precio"] = normalize_inverse_minmax(df["precio"]).round(4)
+    df["norm_nutri"] = normalize_protein_to_100(df["proteinas"]).round(2)
+    df["score_nutricional"] = compute_score_nutricional(df)
+
+    # ------------------------------------------------------------------------
+    # Selección de columnas finales
+    # ------------------------------------------------------------------------
+    # Se conservan únicamente las variables necesarias para el sistema final,
+    # reduciendo ruido y dejando un dataset más limpio y manejable.
+    # ------------------------------------------------------------------------
+    df = df[OUTPUT_COLUMNS].copy()
+
+    return df
+
+
+# ============================================================================
+# GUARDADO DEL DATAFRAME
+# ============================================================================
+# Esta función crea la carpeta de salida si no existe y guarda el resultado
+# final en formato CSV.
+#
+# El CSV generado constituye la versión limpia y tratada del dataset,
+# preparada para alimentar el sistema RAG o cualquier otro módulo analítico.
+# ============================================================================
+
+def save_dataframe(df: pd.DataFrame, output_path: str) -> None:
+    os.makedirs(os.path.dirname(output_path), exist_ok=True)
+    df.to_csv(output_path, index=False, encoding="utf-8")
+
+
+# ============================================================================
+# FUNCION PRINCIPAL
+# ============================================================================
+# La función main coordina todo el flujo:
+# - carga los datos crudos
+# - ejecuta el preprocessing
+# - guarda el resultado limpio
+# - muestra por pantalla un pequeño resumen final
+#
+# Esto permite ejecutar todo el pipeline de transformación con un único
+# comando desde terminal.
+# ============================================================================
+
+def main() -> None:
+    raw_data = load_raw_json(INPUT_FILE)
+    df_clean = preprocess_products(raw_data)
+    save_dataframe(df_clean, OUTPUT_FILE)
+
+    print("Preprocessing completado correctamente.")
+    print(f"Filas finales: {len(df_clean)}")
+    print(f"Archivo guardado en: {OUTPUT_FILE}")
+    print("\nColumnas finales:")
+    print(list(df_clean.columns))
+    print("\nPrimeras filas:")
+    print(df_clean.head())
+
 
 if __name__ == "__main__":
-    df_clean = procesar_datos()
+    main()
