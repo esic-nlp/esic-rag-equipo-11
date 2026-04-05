@@ -1,23 +1,36 @@
-import src.acquisition as acquisition
-import src.preprocessing as preprocessing
-import src.rag as rag
+"""
+main.py
+=======
+Punto de entrada del pipeline RAG Nutricional.
+
+Uso:
+    python main.py
+"""
+
+import sys
+import os
+
+# Añade la raíz al path para que funcionen los imports de src.*
+ROOT = os.path.dirname(os.path.abspath(__file__))
+sys.path.insert(0, ROOT)
+
+from src.preprocessing import procesar_datos
+from src.rag import consultar
 
 
 def main():
-    """
-    Función principal que orquesta el flujo de trabajo del proyecto.
-    """
+    print("=" * 60)
+    print("  🛒  NUTRISEARCH — Pipeline RAG Nutricional")
+    print("=" * 60)
 
-    print("1. Iniciando adquisición...")
-    datos = acquisition.obtener_datos()
+    # 1. Preprocessing
+    print("\n📦 Paso 1: Preprocesando datos...")
+    df = procesar_datos()
+    print(f"   ✅ {len(df)} productos listos.")
 
-    print("2. Iniciando preprocesamiento...")
-    datos_limpios = preprocessing.limpiar_datos(datos)
-
-    print("3. Ejecutando RAG...")
-    rag.consultar(datos_limpios)
-
-    print("¡Proceso terminado con éxito!")
+    # 2. RAG + Web
+    print("\n🌐 Paso 2: Lanzando interfaz web...")
+    consultar(df)
 
 
 if __name__ == "__main__":

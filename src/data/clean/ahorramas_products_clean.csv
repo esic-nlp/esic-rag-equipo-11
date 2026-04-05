@@ -1,0 +1,410 @@
+titulo,precio,proteinas,carbohidratos,grasas,fibra,calories,texto_busqueda,norm_precio,norm_nutri,score_nutricional,categoria_principal
+aceite de oliva virgen extra maestros de hojiblanca garrafa 3l,15.99,5.74,8.99,27.0,1.59,480.0,aceite de oliva virgen extra maestros de hojiblanca garrafa 3l aceite alimentacion_general,0.9152,0.01,0.0,alimentacion_general
+mayonesa de ajo asado hellmann s 250ml,1.99,0.7,6.19,27.0,2.0,270.0,mayonesa de ajo asado hellmann s 250ml mayonesa alimentacion_general,0.991,0.0,0.0,alimentacion_general
+aceite de oliva virgen carbonell 3l,13.99,5.74,8.99,100.0,1.59,900.0,aceite de oliva virgen carbonell 3l aceite alimentacion_general,0.926,0.01,0.0,alimentacion_general
+"aceite de oliva carbonell garrafa 3l 0,4o",12.96,5.74,8.99,27.0,1.59,480.0,"aceite de oliva carbonell garrafa 3l 0,4o aceite alimentacion_general",0.9316,0.01,0.0,alimentacion_general
+mayonesa a la francesa hellmann's 340 ml,2.0,0.6,2.99,73.0,0.59,671.0,mayonesa a la francesa hellmann's 340 ml mayonesa alimentacion_general,0.9909,0.0,0.0,alimentacion_general
+aceite de oliva intenso 1o coosur 5l,19.45,5.74,0.0,91.0,1.59,822.0,aceite de oliva intenso 1o coosur 5l aceite alimentacion_general,0.8964,0.01,0.0,alimentacion_general
+cafe molido mezcla intensa la estrella pack 2x250g,6.5,5.74,8.99,27.0,1.59,480.0,cafe molido mezcla intensa la estrella pack 2x250g cafe alimentacion_general,0.9665,0.01,0.0,alimentacion_general
+salsa mayo de trufa sin gluten bocabajo hellmann's 250ml,1.99,0.89,8.99,27.0,0.4,285.0,salsa mayo de trufa sin gluten bocabajo hellmann's 250ml salsa alimentacion_general,0.991,0.0,0.0,alimentacion_general
+"aceite de oliva 0,4o carbonell 5l",19.95,5.74,8.99,100.0,1.59,900.0,"aceite de oliva 0,4o carbonell 5l aceite alimentacion_general",0.8937,0.01,0.0,alimentacion_general
+caldo casero gallina blanca 1l pollo 100% natural,2.2,0.49,0.2,0.3,0.0,480.0,caldo casero gallina blanca 1l pollo 100% natural caldo alimentacion_general,0.9898,0.0,0.0,alimentacion_general
+sobaos alipende 18 uds 340g,1.69,549.0,53.0,24.19,1.49,453.0,sobaos alipende 18 uds 340g sobaos alimentacion_general,0.9926,1.17,1.15,alimentacion_general
+galleta barquillo mini de chocolate con leche y avellanas artiach 110g,1.99,4.99,62.0,476.0,1.59,532.0,galleta barquillo mini de chocolate con leche y avellanas artiach 110g galleta alimentacion_general,0.991,0.01,0.0,alimentacion_general
+cafe espresso intenso nescafe dolce gusto 16 capsulas,4.95,5.74,8.99,27.0,1.59,480.0,cafe espresso intenso nescafe dolce gusto 16 capsulas cafe alimentacion_general,0.9749,0.01,0.0,alimentacion_general
+hogaza de pan the rustik bakery 400g,2.69,9.4,459.0,1.59,49.0,239.0,hogaza de pan the rustik bakery 400g hogaza alimentacion_general,0.9872,0.02,0.02,alimentacion_general
+yakisoba con pollo ta-tung 250g,3.99,6.49,18.0,8.0,1.59,480.0,yakisoba con pollo ta-tung 250g yakisoba alimentacion_general,0.9801,0.01,0.0,alimentacion_general
+fabada asturiana litoral 420g,2.3,6.59,7.69,8.7,5.19,145.0,fabada asturiana litoral 420g fabada alimentacion_general,0.9893,0.01,0.01,alimentacion_general
+aceitunas verdes rellanas de boqueron en vinagre el faro 150g,1.75,5.74,8.99,27.0,1.59,480.0,aceitunas verdes rellanas de boqueron en vinagre el faro 150g aceitunas alimentacion_general,0.9923,0.01,0.0,alimentacion_general
+caballa del sur usisa 78g en aceite oliva,1.99,5.74,8.99,27.0,1.59,480.0,caballa del sur usisa 78g en aceite oliva caballa alimentacion_general,0.991,0.01,0.0,alimentacion_general
+snacks de maiz doritos tex-mex 225g,2.55,6.8,61.0,22.0,5.59,480.0,snacks de maiz doritos tex-mex 225g snacks alimentacion_general,0.9879,0.01,0.0,alimentacion_general
+cerveza rubia mahou clasica pack 24 latas 33cl,13.44,0.0,10.0,0.0,4.0,4.0,cerveza rubia mahou clasica pack 24 latas 33cl cerveza bebidas,0.929,0.0,0.0,bebidas
+cerveza rubia especial estrella galicia pack 6 botellas 20cl,3.55,0.0,359.0,0.0,4.0,47.0,cerveza rubia especial estrella galicia pack 6 botellas 20cl cerveza bebidas,0.9825,0.0,0.0,bebidas
+cerveza rubia especial estrella galicia pack 12 botellas 25cl,7.32,0.0,10.0,0.0,4.0,4.0,cerveza rubia especial estrella galicia pack 12 botellas 25cl cerveza bebidas,0.9621,0.0,0.0,bebidas
+refresco cola coca-cola 2l pack 2 zero zero sin cafeina,3.8,0.0,0.0,0.0,4.0,0.2,refresco cola coca-cola 2l pack 2 zero zero sin cafeina refresco bebidas,0.9812,0.0,0.01,bebidas
+cerveza rubia especial estrella galicia pack 10 latas 33cl,7.6,0.0,359.0,0.0,4.0,47.0,cerveza rubia especial estrella galicia pack 10 latas 33cl cerveza bebidas,0.9606,0.0,0.0,bebidas
+zumo de naranja 100% exprimida sin pulpa alipende 1l,1.85,0.0,10.0,0.0,4.0,43.0,zumo de naranja 100% exprimida sin pulpa alipende 1l zumo bebidas,0.9917,0.0,0.0,bebidas
+refresco cola coca-cola botella 2l pack 2 zero,3.8,0.0,0.0,0.0,4.0,0.2,refresco cola coca-cola botella 2l pack 2 zero refresco bebidas,0.9812,0.0,0.01,bebidas
+refresco cola coca-cola botella 2l pack 4 zero,7.52,0.0,0.0,0.0,4.0,0.2,refresco cola coca-cola botella 2l pack 4 zero refresco bebidas,0.961,0.0,0.01,bebidas
+"smoothie frambuesa,fresa y platano 250ml",0.99,0.0,10.0,0.0,4.0,4.0,"smoothie frambuesa,fresa y platano 250ml smoothie bebidas",0.9964,0.0,0.0,bebidas
+cerveza rubia especial mahou 5 estrellas pack 12 botellas 25cl,6.36,0.0,10.0,0.0,4.0,4.0,cerveza rubia especial mahou 5 estrellas pack 12 botellas 25cl cerveza bebidas,0.9673,0.0,0.0,bebidas
+"refresco cola pepsi zero botella 1,75l pack 2",2.8,0.0,0.1,0.0,4.0,0.6,"refresco cola pepsi zero botella 1,75l pack 2 refresco bebidas",0.9866,0.0,0.01,bebidas
+cerveza rubia san miguel especial pack 12 latas 33cl,5.4,0.0,10.0,0.0,4.0,4.0,cerveza rubia san miguel especial pack 12 latas 33cl cerveza bebidas,0.9725,0.0,0.0,bebidas
+cerveza rubia adlerbrau lata 33cl,0.32,0.0,10.0,0.0,4.0,4.0,cerveza rubia adlerbrau lata 33cl cerveza bebidas,1.0,0.0,0.0,bebidas
+cerveza sin alcohol mahou 00 tostada pack 12 latas 33cl,8.04,0.0,10.0,1.0,4.0,4.0,cerveza sin alcohol mahou 00 tostada pack 12 latas 33cl cerveza bebidas,0.9582,0.0,0.0,bebidas
+agua font vella 33cl sport,0.54,0.0,10.0,0.0,4.0,4.0,agua font vella 33cl sport agua bebidas,0.9988,0.0,0.0,bebidas
+"agua bezoya 0,5l pack 6",3.36,0.0,10.0,0.0,4.0,4.0,"agua bezoya 0,5l pack 6 agua bebidas",0.9835,0.0,0.0,bebidas
+bebida monster sin azucar anadido 50cl x 4 taurina ginseng,5.36,0.0,0.9,0.0,4.0,2.0,bebida monster sin azucar anadido 50cl x 4 taurina ginseng bebida bebidas,0.9727,0.0,0.01,bebidas
+vino blanco do rueda cuatro rayas verdejo,5.25,0.19,1.69,0.1,4.0,79.0,vino blanco do rueda cuatro rayas verdejo vino bebidas,0.9733,0.0,0.01,bebidas
+bacalao en filetes pescanova 400g,7.99,12.6145,28.645,21.0,0.8400000000000001,260.0,bacalao en filetes pescanova 400g bacalao congelados,0.9585,0.03,0.0,congelados
+filete de merluza antonio y ricardo 450g sin piel,4.49,12.6145,0.0,1.69,0.8400000000000001,260.0,filete de merluza antonio y ricardo 450g sin piel filete congelados,0.9774,0.03,0.02,congelados
+varitas de merluza pescanova 300g empanadas,2.99,1098.0,28.645,21.0,0.8400000000000001,260.0,varitas de merluza pescanova 300g empanadas varitas congelados,0.9855,2.34,2.33,congelados
+medallones de merluza pescanova 400g,6.79,15.89,0.0,1.59,0.8400000000000001,77.0,medallones de merluza pescanova 400g medallones congelados,0.965,0.03,0.03,congelados
+anillos a la romana sin gluten pescanova 400g,3.99,12.6145,28.645,21.0,0.8400000000000001,260.0,anillos a la romana sin gluten pescanova 400g anillos congelados,0.9801,0.03,0.0,congelados
+lasana la cocinera bolonesa 500g,3.59,209.0,28.645,21.0,0.8400000000000001,260.0,lasana la cocinera bolonesa 500g lasana congelados,0.9823,0.44,0.42,congelados
+bacalao al vacio filetes scanfisk 360g,5.5,12.6145,28.645,21.0,0.8400000000000001,260.0,bacalao al vacio filetes scanfisk 360g bacalao congelados,0.972,0.03,0.0,congelados
+pizza ristorante dr oetker 340g prosciutto,3.95,12.6145,28.645,21.0,0.8400000000000001,260.0,pizza ristorante dr oetker 340g prosciutto pizza congelados,0.9803,0.03,0.0,congelados
+gyoza de pollo leroy 396g,3.29,12.6145,28.645,21.0,0.8400000000000001,260.0,gyoza de pollo leroy 396g gyoza congelados,0.9839,0.03,0.0,congelados
+arroz con pollo findus 400g tikka masala,4.89,12.6145,28.645,21.0,0.8400000000000001,260.0,arroz con pollo findus 400g tikka masala arroz congelados,0.9753,0.03,0.0,congelados
+"nuggets con rebozado fino, la cocinera, 400 g",5.25,12.6145,28.645,21.0,0.8400000000000001,260.0,"nuggets con rebozado fino, la cocinera, 400 g nuggets congelados",0.9733,0.03,0.0,congelados
+pizza la mia grande dr oetker 400g prosciutto,5.35,46992.0,28.645,809.0,0.8400000000000001,260.0,pizza la mia grande dr oetker 400g prosciutto pizza congelados,0.9728,100.0,100.0,congelados
+pizza ristorante dr oetker 335g mozzarella,3.95,12.6145,28.645,21.0,0.8400000000000001,260.0,pizza ristorante dr oetker 335g mozzarella pizza congelados,0.9803,0.03,0.0,congelados
+pizza ristorante dr oetker 350g barbacoa,3.95,12.6145,28.645,21.0,0.8400000000000001,260.0,pizza ristorante dr oetker 350g barbacoa pizza congelados,0.9803,0.03,0.0,congelados
+gyoza de cerdo leroy 400g,3.29,12.6145,28.645,21.0,0.8400000000000001,260.0,gyoza de cerdo leroy 400g gyoza congelados,0.9839,0.03,0.0,congelados
+tequenos queso para horno tekefingers 6 uds 190g,2.99,12.6145,28.645,21.0,0.8400000000000001,260.0,tequenos queso para horno tekefingers 6 uds 190g tequenos congelados,0.9855,0.03,0.0,congelados
+calabacin fries maheso 300g,1.99,12.6145,28.645,21.0,0.8400000000000001,260.0,calabacin fries maheso 300g calabacin congelados,0.991,0.03,0.0,congelados
+croqueta artesana la cocinera 400g jamon serrano,4.99,7.19,24.0,4.89,0.7,169.0,croqueta artesana la cocinera 400g jamon serrano croqueta congelados,0.9747,0.02,0.01,congelados
+lomos merluza pescanova 325g romana,4.99,70.0,28.645,50.0,0.8400000000000001,260.0,lomos merluza pescanova 325g romana lomos congelados,0.9747,0.15,0.1,congelados
+varitas de merluza findus,1.99,139.0,21.0,839.0,0.99,213.0,varitas de merluza findus varitas congelados,0.991,0.3,0.0,congelados
+mandarina fontestad,4.39,1.0,1.0,279.0,4.54,108.0,mandarina fontestad mandarina frescos,0.978,0.0,0.0,frescos
+aguacate,5.39,1.0,1.0,279.0,4.54,108.0,aguacate aguacate frescos,0.9725,0.0,0.0,frescos
+lote 1kg de cinta de lomo fresca + 1kg de chuleta de aguja,4.99,1.0,1.0,279.0,4.54,108.0,lote 1kg de cinta de lomo fresca + 1kg de chuleta de aguja lote frescos,0.9747,0.0,0.0,frescos
+dorada de racion pieza 400g aproximadamente,5.5,1.0,1.0,279.0,4.54,108.0,dorada de racion pieza 400g aproximadamente dorada frescos,0.972,0.0,0.0,frescos
+morcillo de anojo,15.99,1.0,1.0,279.0,4.54,108.0,morcillo de anojo morcillo frescos,0.9152,0.0,0.0,frescos
+patata,1.49,1.0,1.0,279.0,4.54,108.0,patata patata frescos,0.9937,0.0,0.0,frescos
+solomillo de cerdo,8.99,1.0,1.0,279.0,4.54,108.0,solomillo de cerdo solomillo frescos,0.9531,0.0,0.0,frescos
+pechuga de pollo amarillo pazo de pias,9.49,1.0,1.0,279.0,4.54,108.0,pechuga de pollo amarillo pazo de pias pechuga frescos,0.9503,0.0,0.0,frescos
+pera conferencia,2.29,1.0,1.0,279.0,4.54,108.0,pera conferencia pera frescos,0.9893,0.0,0.0,frescos
+lomo pez espada,14.99,1.0,1.0,279.0,4.54,108.0,lomo pez espada lomo frescos,0.9206,0.0,0.0,frescos
+brocoli 500g,1.29,1.0,1.0,279.0,4.54,108.0,brocoli 500g brocoli frescos,0.9947,0.0,0.0,frescos
+lote 1kg pechugas de pollo + 1kg de muslos,4.99,1.0,1.0,279.0,4.54,108.0,lote 1kg pechugas de pollo + 1kg de muslos lote frescos,0.9747,0.0,0.0,frescos
+kiwi nacional,3.29,1.0,1.0,279.0,4.54,108.0,kiwi nacional kiwi frescos,0.9839,0.0,0.0,frescos
+lote: 250gr jamon cocido+250gr pechuga pavo+250gr queso barra,14.65,1.0,1.0,279.0,4.54,108.0,lote: 250gr jamon cocido+250gr pechuga pavo+250gr queso barra lote: frescos,0.9224,0.0,0.0,frescos
+gallo de racion,7.99,1.0,1.0,279.0,4.54,108.0,gallo de racion gallo frescos,0.9585,0.0,0.0,frescos
+tomate cherokee,3.99,1.0,1.0,279.0,4.54,108.0,tomate cherokee tomate frescos,0.9801,0.0,0.0,frescos
+poton del pacifico en anillas,7.99,1.0,1.0,279.0,4.54,108.0,poton del pacifico en anillas poton frescos,0.9585,0.0,0.0,frescos
+chuletas de cordero lechal por carres,19.99,1.0,1.0,279.0,4.54,108.0,chuletas de cordero lechal por carres chuletas frescos,0.8935,0.0,0.0,frescos
+bacon ahumado alipende 210g,2.15,1.0,1.0,279.0,4.54,108.0,bacon ahumado alipende 210g bacon frescos,0.9901,0.0,0.0,frescos
+kiwi bandeja 1kg,2.89,1.0,1.0,279.0,4.54,108.0,kiwi bandeja 1kg kiwi frescos,0.9861,0.0,0.0,frescos
+alas de pollo amarillo pazo de pias,5.99,1609.0,1.3,9.0,0.009,284.40999999999997,alas de pollo amarillo pazo de pias alas carne,0.9693,3.42,3.44,carne
+traseros de pollo amarillo pazo de pias,4.99,1609.0,1.3,9.0,0.009,284.40999999999997,traseros de pollo amarillo pazo de pias traseros carne,0.9747,3.42,3.44,carne
+costilla de cerdo adoba alipende,7.99,1609.0,1.3,9.0,0.009,284.40999999999997,costilla de cerdo adoba alipende costilla carne,0.9585,3.42,3.44,carne
+lote de pollo: 1kg de pechugas + 1kg de alas,6.49,1609.0,1.3,9.0,0.009,284.40999999999997,lote de pollo: 1kg de pechugas + 1kg de alas lote carne,0.9666,3.42,3.44,carne
+lote de pollo: 1kg de contramuslos + 1kg de jamoncitos,5.49,1609.0,1.3,9.0,0.009,284.40999999999997,lote de pollo: 1kg de contramuslos + 1kg de jamoncitos lote carne,0.972,3.42,3.44,carne
+ragout de anojo,16.99,1609.0,1.3,9.0,0.009,284.40999999999997,ragout de anojo ragout carne,0.9097,3.42,3.44,carne
+filetes de anojo 1aa,18.99,1609.0,1.3,9.0,0.009,284.40999999999997,filetes de anojo 1aa filetes carne,0.8989,3.42,3.44,carne
+lote 2 kg de pechugas de pollo,7.99,1609.0,1.3,9.0,0.009,284.40999999999997,lote 2 kg de pechugas de pollo lote carne,0.9585,3.42,3.44,carne
+cinta de lomo adobada cerdo duroc,8.99,20739.0,0.809,5.309,0.009,133.82,cinta de lomo adobada cerdo duroc cinta carne,0.9531,44.13,44.42,carne
+pechuga de pollo,7.99,1609.0,1.3,9.0,0.009,284.40999999999997,pechuga de pollo pechuga carne,0.9585,3.42,3.44,carne
+entrecotte de vaca,22.99,1609.0,1.3,9.0,0.009,284.40999999999997,entrecotte de vaca entrecotte carne,0.8772,3.42,3.44,carne
+lote de 4 unidades de burguer meat de anojo angus 150g/ud,10.5,1609.0,1.3,9.0,0.009,284.40999999999997,lote de 4 unidades de burguer meat de anojo angus 150g/ud lote carne,0.9449,3.42,3.44,carne
+filetes de anojo 1ab,17.99,1609.0,1.3,9.0,0.009,284.40999999999997,filetes de anojo 1ab filetes carne,0.9043,3.42,3.44,carne
+lote 1 kg de pechugas + 1 kg de jamoncitos + 1 kg de contramuslos de pollo,6.32,1609.0,1.3,9.0,0.009,284.40999999999997,lote 1 kg de pechugas + 1 kg de jamoncitos + 1 kg de contramuslos de pollo lote carne,0.9675,3.42,3.44,carne
+lote de pollo 1 kg pechugas + 1 kg de traseros + 1 kg de alas,5.66,1609.0,1.3,9.0,0.009,284.40999999999997,lote de pollo 1 kg pechugas + 1 kg de traseros + 1 kg de alas lote carne,0.9711,3.42,3.44,carne
+lote 2kg de contramuslos de pollo,5.99,1609.0,1.3,9.0,0.009,284.40999999999997,lote 2kg de contramuslos de pollo lote carne,0.9693,3.42,3.44,carne
+pollo limpio entero,3.75,1609.0,1.3,9.0,0.009,284.40999999999997,pollo limpio entero pollo carne,0.9814,3.42,3.44,carne
+longaniza de pollo gourmet,7.99,1609.0,1.3,9.0,0.009,284.40999999999997,longaniza de pollo gourmet longaniza carne,0.9585,3.42,3.44,carne
+lote 2 kg de traseros de pollo,3.99,1609.0,1.3,9.0,0.009,284.40999999999997,lote 2 kg de traseros de pollo lote carne,0.9801,3.42,3.44,carne
+croquetas de pollo y jamon,8.99,1609.0,9.0,9.0,0.009,284.40999999999997,croquetas de pollo y jamon croquetas carne,0.9531,3.42,3.43,carne
+lote 2kg de jamoncitos de pollo,4.99,1609.0,1.3,9.0,0.009,284.40999999999997,lote 2kg de jamoncitos de pollo lote carne,0.9747,3.42,3.44,carne
+lote 2kg de alas de pollo,4.99,1609.0,1.3,9.0,0.009,284.40999999999997,lote 2kg de alas de pollo lote carne,0.9747,3.42,3.44,carne
+traseros de pollo,3.99,1609.0,1.3,9.0,0.009,284.40999999999997,traseros de pollo traseros carne,0.9801,3.42,3.44,carne
+alas de pollo frescas,4.99,1609.0,1.3,9.0,0.009,284.40999999999997,alas de pollo frescas alas carne,0.9747,3.42,3.44,carne
+lote: 250gr jamon curado+250gr mortadela+250gr queso curado,19.87,16.0,1.295,0.4,0.19,67.0,lote: 250gr jamon curado+250gr mortadela+250gr queso curado lote: charcuteria,0.8941,0.03,0.03,charcuteria
+bacon ahumado alipende,10.99,199.0,0.0,23.0,0.19,272.0,bacon ahumado alipende bacon charcuteria,0.9422,0.42,0.41,charcuteria
+lote: 250gr jamon asado+250gr queso brie president,13.0,26.5,1.295,23.0,0.19,288.0,lote: 250gr jamon asado+250gr queso brie president lote: charcuteria,0.9313,0.06,0.04,charcuteria
+lote: 200gr queso umami+200gr queso cava barus+200gr queso azul adictivo,16.65,26.5,22.0,23.0,0.19,386.0,lote: 200gr queso umami+200gr queso cava barus+200gr queso azul adictivo lote: charcuteria,0.9116,0.06,0.03,charcuteria
+jamon de cebo de campo 50% raza iberico lasencia al corte,54.0,26.5,1.295,23.0,0.19,288.0,jamon de cebo de campo 50% raza iberico lasencia al corte jamon charcuteria,0.7093,0.06,0.04,charcuteria
+queso curado gran capitan,17.99,26.0,1.59,359.0,0.19,430.0,queso curado gran capitan queso charcuteria,0.9043,0.06,0.0,charcuteria
+jamon de cebo 50% raza iberico legado 8 kg aprox,185.0,29.59,0.0,21.0,0.19,307.0,jamon de cebo 50% raza iberico legado 8 kg aprox jamon charcuteria,0.0,0.06,0.04,charcuteria
+queso mezcla curado sabor umami cerrato,15.99,27.0,1.0,359.0,0.19,427.0,queso mezcla curado sabor umami cerrato queso charcuteria,0.9152,0.06,0.0,charcuteria
+queso azul adictivo quevedo,19.99,26.5,22.0,23.0,0.19,386.0,queso azul adictivo quevedo queso charcuteria,0.8935,0.06,0.03,charcuteria
+jamon de cebo 50% raza iberico legado iberico al corte,68.0,29.59,0.0,21.0,0.19,307.0,jamon de cebo 50% raza iberico legado iberico al corte jamon charcuteria,0.6335,0.06,0.04,charcuteria
+pechuga de pavo frial asada,21.25,1.0,1.0,279.0,0.19,108.0,pechuga de pavo frial asada pechuga charcuteria,0.8867,0.0,0.0,charcuteria
+jamon cocido extra campofrio,14.29,26.5,1.295,23.0,0.19,288.0,jamon cocido extra campofrio jamon charcuteria,0.9244,0.06,0.04,charcuteria
+centro de jamon curado sierra blanca,24.0,0.5,7.82,23.0,0.19,15.6,centro de jamon curado sierra blanca centro charcuteria,0.8718,0.0,0.0,charcuteria
+pechuga de pavo campofrio braseado,17.49,26.5,1.295,23.0,0.19,288.0,pechuga de pavo campofrio braseado pechuga charcuteria,0.907,0.06,0.04,charcuteria
+jamon raza duroc batalle al corte,42.0,26.5,1.295,23.0,0.19,288.0,jamon raza duroc batalle al corte jamon charcuteria,0.7743,0.06,0.04,charcuteria
+lomo de cebo 50% raza iberica,43.0,26.5,1.295,25.0,0.19,394.0,lomo de cebo 50% raza iberica lomo charcuteria,0.7689,0.06,0.03,charcuteria
+tournedo anojo 1aa,20.99,1609.0,1.3,9.0,0.009,284.40999999999997,tournedo anojo 1aa tournedo carne,0.8881,3.42,3.44,carne
+lomo de anojo,24.99,1609.0,1.3,9.0,0.009,284.40999999999997,lomo de anojo lomo carne,0.8664,3.42,3.44,carne
+ragout de anojo seleccion,17.99,1609.0,1.3,9.0,0.009,284.40999999999997,ragout de anojo seleccion ragout carne,0.9043,3.42,3.44,carne
+solomillo de angus,49.99,1609.0,1.3,9.0,0.009,284.40999999999997,solomillo de angus solomillo carne,0.731,3.42,3.44,carne
+entranas de anojo,15.99,1609.0,1.3,9.0,0.009,284.40999999999997,entranas de anojo entranas carne,0.9152,3.42,3.44,carne
+picana de anojo pieza,20.99,1609.0,1.3,9.0,0.009,284.40999999999997,picana de anojo pieza picana carne,0.8881,3.42,3.44,carne
+rotti de anojo,17.99,1609.0,1.3,9.0,0.009,284.40999999999997,rotti de anojo rotti carne,0.9043,3.42,3.44,carne
+solomillo de anojo,39.99,1609.0,1.3,9.0,0.009,284.40999999999997,solomillo de anojo solomillo carne,0.7852,3.42,3.44,carne
+t-bone de lomo de vaca madurada,32.99,1609.0,1.3,9.0,0.009,284.40999999999997,t-bone de lomo de vaca madurada t-bone carne,0.8231,3.42,3.44,carne
+"solomillo de anojo por pieza entre 2 - 2,4kg",34.99,1609.0,1.3,9.0,0.009,284.40999999999997,"solomillo de anojo por pieza entre 2 - 2,4kg solomillo carne",0.8123,3.42,3.44,carne
+chuleton de anojo,22.99,1609.0,1.3,9.0,0.009,284.40999999999997,chuleton de anojo chuleton carne,0.8772,3.42,3.44,carne
+burger meat de vacuno goiko 2 x 180g,6.49,1609.0,1.3,9.0,0.009,284.40999999999997,burger meat de vacuno goiko 2 x 180g burger carne,0.9666,3.42,3.44,carne
+steak tartar marinado casa de vacas 180g,8.99,31.0,1.3,33.69,0.009,435.0,steak tartar marinado casa de vacas 180g steak carne,0.9531,0.07,0.03,carne
+carne para guisar de anojo all natural elpozo 600g aproximadamente,10.49,1609.0,1.3,9.0,0.009,284.40999999999997,carne para guisar de anojo all natural elpozo 600g aproximadamente carne carne,0.9449,3.42,3.44,carne
+guisantes alipende 1kg finos,1.65,12.6145,28.645,21.0,0.8400000000000001,260.0,guisantes alipende 1kg finos guisantes congelados,0.9928,0.03,0.0,congelados
+guisantes fino findus 400g,2.89,12.6145,28.645,21.0,0.8400000000000001,260.0,guisantes fino findus 400g guisantes congelados,0.9861,0.03,0.0,congelados
+guisantes alipende 300g extrafinos,1.09,12.6145,28.645,21.0,0.8400000000000001,260.0,guisantes alipende 300g extrafinos guisantes congelados,0.9958,0.03,0.0,congelados
+edamame seacon 500g,1.85,12.6145,28.645,21.0,0.8400000000000001,260.0,edamame seacon 500g edamame congelados,0.9917,0.03,0.0,congelados
+salchichon iberico cular florencio gomez,20.99,26.5,1.295,23.0,0.19,288.0,salchichon iberico cular florencio gomez salchichon charcuteria,0.8881,0.06,0.04,charcuteria
+chorizo de vela iberico florencio gomez medio o entero pieza 600g aproximadamente,19.99,26.5,1.295,23.0,0.19,288.0,chorizo de vela iberico florencio gomez medio o entero pieza 600g aproximadamente chorizo charcuteria,0.8935,0.06,0.04,charcuteria
+lomo de bellota 50% raza iberica,65.0,26.5,0.1,15.99,0.19,288.0,lomo de bellota 50% raza iberica lomo charcuteria,0.6498,0.06,0.04,charcuteria
+lomo cebo 50% iberico emjamesa al corte,43.0,34.0,5.0,229.0,0.19,332.0,lomo cebo 50% iberico emjamesa al corte lomo charcuteria,0.7689,0.07,0.0,charcuteria
+chorizo iberico cular florencio gomez,20.99,26.5,1.295,23.0,0.19,288.0,chorizo iberico cular florencio gomez chorizo charcuteria,0.8881,0.06,0.04,charcuteria
+lomo de cebo iberico emjamesa,47.0,26.5,1.295,25.0,0.19,394.0,lomo de cebo iberico emjamesa lomo charcuteria,0.7472,0.06,0.03,charcuteria
+lomo de cebo de campo 50% iberico emjamesa,47.0,26.5,1.295,23.0,0.19,288.0,lomo de cebo de campo 50% iberico emjamesa lomo charcuteria,0.7472,0.06,0.04,charcuteria
+lomo bellota 50% ibnerico medina al corte,65.0,26.5,0.1,15.99,0.19,288.0,lomo bellota 50% ibnerico medina al corte lomo charcuteria,0.6498,0.06,0.04,charcuteria
+lomo bellota 50% iberico medina,65.0,26.5,1.295,23.0,0.19,288.0,lomo bellota 50% iberico medina lomo charcuteria,0.6498,0.06,0.04,charcuteria
+fuet espetec sin lactosa alipende 170 gr,1.95,26.5,1.295,23.0,0.19,288.0,fuet espetec sin lactosa alipende 170 gr fuet charcuteria,0.9912,0.06,0.04,charcuteria
+chorizo iberico lasencia pack de 50g,2.09,26.5,1.295,23.0,0.19,288.0,chorizo iberico lasencia pack de 50g chorizo charcuteria,0.9904,0.06,0.04,charcuteria
+lomo de orza tello 125gr,2.79,23.0,0.8,10.0,0.19,185.0,lomo de orza tello 125gr lomo charcuteria,0.9866,0.05,0.04,charcuteria
+paleta cebo de campo 50% iberica lasencia pack 2 de 50g,6.09,26.5,1.295,23.0,0.19,288.0,paleta cebo de campo 50% iberica lasencia pack 2 de 50g paleta charcuteria,0.9688,0.06,0.04,charcuteria
+salchichon iberico lasencia pack 2 de 50g,2.09,26.5,1.295,23.0,0.19,288.0,salchichon iberico lasencia pack 2 de 50g salchichon charcuteria,0.9904,0.06,0.04,charcuteria
+cana de lomo cebo 50% iberico en lonchas canpipork 100g,4.9,26.5,1.295,23.0,0.19,288.0,cana de lomo cebo 50% iberico en lonchas canpipork 100g cana charcuteria,0.9752,0.06,0.04,charcuteria
+jamon cebo iberico canpipork 100 gr,4.9,26.5,1.295,23.0,0.19,288.0,jamon cebo iberico canpipork 100 gr jamon charcuteria,0.9752,0.06,0.04,charcuteria
+lacon de jamon mrm,13.49,26.5,1.295,23.0,0.19,288.0,lacon de jamon mrm lacon charcuteria,0.9287,0.06,0.04,charcuteria
+choped ham gourmet tello,9.99,26.5,1.295,23.0,0.19,288.0,choped ham gourmet tello choped charcuteria,0.9476,0.06,0.04,charcuteria
+jamon cocido extra la selva,16.99,26.5,1.295,23.0,0.19,288.0,jamon cocido extra la selva jamon charcuteria,0.9097,0.06,0.04,charcuteria
+jamon cocido frial gran seleccion duroc,17.49,21.0,89.0,3.69,0.19,120.0,jamon cocido frial gran seleccion duroc jamon charcuteria,0.907,0.04,0.03,charcuteria
+mortadela ahumada mrm,8.49,10.69,9.0,9.0,0.19,276.6,mortadela ahumada mrm mortadela charcuteria,0.9558,0.02,0.01,charcuteria
+pechuga de pollo al horno la carlotena,18.55,229.0,1.295,580.0,0.19,288.0,pechuga de pollo al horno la carlotena pechuga charcuteria,0.9013,0.49,0.02,charcuteria
+pavo con olivas 7 hermanos,8.5,26.5,1.295,23.0,0.19,288.0,pavo con olivas 7 hermanos pavo charcuteria,0.9557,0.06,0.04,charcuteria
+pechuga de pavo elpozo sin grasa y reducida en sal,14.95,26.5,1.295,23.0,0.19,288.0,pechuga de pavo elpozo sin grasa y reducida en sal pechuga charcuteria,0.9208,0.06,0.04,charcuteria
+pechuga de pavo pavofrio,17.25,159.0,219.0,149.0,0.19,81.0,pechuga de pavo pavofrio pechuga charcuteria,0.9083,0.34,0.19,charcuteria
+jamon cocido extra alipende,9.9,26.5,139.0,23.0,0.19,288.0,jamon cocido extra alipende jamon charcuteria,0.9481,0.06,0.01,charcuteria
+pavo elpozo 1954 con trufa y boletus,14.95,26.5,159.0,9.0,0.19,89.0,pavo elpozo 1954 con trufa y boletus pavo charcuteria,0.9208,0.06,0.02,charcuteria
+chicharron frito frial,11.49,199.0,0.0,25.0,0.19,301.0,chicharron frito frial chicharron charcuteria,0.9395,0.42,0.4,charcuteria
+pechuga pavo reducida en sal frial ahumada,21.9,20.0,1.0,1.0,0.19,93.0,pechuga pavo reducida en sal frial ahumada pechuga charcuteria,0.8831,0.04,0.04,charcuteria
+mortadela iberica elpozo,8.95,26.5,1.295,70.0,0.19,288.0,mortadela iberica elpozo mortadela charcuteria,0.9533,0.06,0.0,charcuteria
+pechuga de pollo villaroy,9.99,104.795,1.95,9.0,0.245,119.5,pechuga de pollo villaroy pechuga otros,0.9476,0.22,0.22,otros
+alas de pollo adobadas granja gourmet 500g aproximadamente,2.52,104.795,1.95,1.0,0.245,119.5,alas de pollo adobadas granja gourmet 500g aproximadamente alas otros,0.9881,0.22,0.22,otros
+albondiga de pollo aldelis 420g,3.99,104.795,1.95,9.0,0.245,119.5,albondiga de pollo aldelis 420g albondiga otros,0.9801,0.22,0.22,otros
+pechuga de pollo sin gluten marinada empanada aldelis 400gr,3.6,104.795,19.0,149.0,0.245,147.0,pechuga de pollo sin gluten marinada empanada aldelis 400gr pechuga otros,0.9822,0.22,0.1,otros
+san jacobo pollo y pavo aldelis 340g,3.99,104.795,1.95,9.0,0.245,119.5,san jacobo pollo y pavo aldelis 340g san otros,0.9801,0.22,0.22,otros
+flamenquin extrarcrujiente de pavo y queso sin gluten aldelis 255g,3.49,104.795,1.95,9.0,0.245,119.5,flamenquin extrarcrujiente de pavo y queso sin gluten aldelis 255g flamenquin otros,0.9828,0.22,0.22,otros
+pincho de jamon de cerdo adobado alipende 4 uds 300g aproximadamente,3.6,104.795,0.39,359.0,0.0,113.0,pincho de jamon de cerdo adobado alipende 4 uds 300g aproximadamente pincho otros,0.9822,0.22,0.0,otros
+pechuga villaroy calatayud 360g aproximadamente,3.6,104.795,1.95,7.0,0.245,119.5,pechuga villaroy calatayud 360g aproximadamente pechuga otros,0.9822,0.22,0.22,otros
+carpaccio con queso parmigiano y salsa roler 110g,4.1,104.795,1.95,9.0,0.245,119.5,carpaccio con queso parmigiano y salsa roler 110g carpaccio otros,0.9795,0.22,0.22,otros
+albondigas de cerdo y vacuno emcesa 480g,4.6,104.795,3.0,9.0,0.245,144.0,albondigas de cerdo y vacuno emcesa 480g albondigas otros,0.9768,0.22,0.22,otros
+croqueta de pollo y jamon aldelis 380g,3.99,104.795,1.95,1129.0,0.49,119.5,croqueta de pollo y jamon aldelis 380g croqueta otros,0.9801,0.22,0.0,otros
+solomillo de pollo empanado elpozo 425g aproximadamente,4.46,104.795,1.95,9.0,0.245,119.5,solomillo de pollo empanado elpozo 425g aproximadamente solomillo otros,0.9776,0.22,0.22,otros
+nuggets de pollo extracrujientes aldelis 320g,2.99,104.795,1.95,9.0,461.0,119.5,nuggets de pollo extracrujientes aldelis 320g nuggets otros,0.9855,0.22,0.96,otros
+croquetas de cocido aldelis 380g,3.99,104.795,1.95,3.0,0.245,119.5,croquetas de cocido aldelis 380g croquetas otros,0.9801,0.22,0.22,otros
+"codillo salmuerizado alipende 1,35kg aproximadamente",9.44,104.795,0.9,219.0,0.245,91.0,"codillo salmuerizado alipende 1,35kg aproximadamente codillo otros",0.9506,0.22,0.05,otros
+kebab king upp elpozo 300 gr pavo-pollo,3.85,20.59,0.5,4.0,0.245,120.0,kebab king upp elpozo 300 gr pavo-pollo kebab otros,0.9809,0.04,0.04,otros
+fiambre de lomo adobado alipende 300g aproximadamente,2.79,189.0,39.0,49.0,0.0,119.0,fiambre de lomo adobado alipende 300g aproximadamente fiambre otros,0.9866,0.4,0.36,otros
+aceite de oliva virgen extra abril spray 200ml,2.7,0.0,0.0,1009.0,0.0,823.0,aceite de oliva virgen extra abril spray 200ml aceite aceites,0.9871,0.0,0.0,aceites
+aceite oliva virgen extra alipende 1l,4.95,0.0,0.0,420.7,0.0,823.0,aceite oliva virgen extra alipende 1l aceite aceites,0.9749,0.0,0.0,aceites
+aceite oliva virgen extra nacional alipende garrafa 5l,24.25,0.0,9.0,420.7,0.0,823.0,aceite oliva virgen extra nacional alipende garrafa 5l aceite aceites,0.8704,0.0,0.0,aceites
+aceite de oliva abril 2l virgen extra,9.7,0.0,0.0,420.7,0.0,823.0,aceite de oliva abril 2l virgen extra aceite aceites,0.9492,0.0,0.0,aceites
+aceite de oliva virgen extra carbonell 1l,5.49,0.0,0.0,420.7,0.0,823.0,aceite de oliva virgen extra carbonell 1l aceite aceites,0.972,0.0,0.0,aceites
+aceite de oliva virgen coosur serie oro 1l,4.79,0.0,0.0,420.7,0.0,823.0,aceite de oliva virgen coosur serie oro 1l aceite aceites,0.9758,0.0,0.0,aceites
+aceite de oliva virgen extra maestros de hojiblanca 1l,5.69,0.0,0.0,420.7,0.0,823.0,aceite de oliva virgen extra maestros de hojiblanca 1l aceite aceites,0.9709,0.0,0.0,aceites
+aceite de oliva virgen extra hojiblanca coosur 1l,5.79,0.0,0.0,91.0,0.0,822.0,aceite de oliva virgen extra hojiblanca coosur 1l aceite aceites,0.9704,0.0,0.0,aceites
+aceite de oliva virgen extra ybarra 500ml,3.75,0.0,0.0,928.0,0.0,824.0,aceite de oliva virgen extra ybarra 500ml aceite aceites,0.9814,0.0,0.0,aceites
+aceite oliva virgen extra carbonell 750ml,5.49,3.0,0.0,750.0,0.0,823.0,aceite oliva virgen extra carbonell 750ml aceite aceites,0.972,0.01,0.0,aceites
+aceite oliva virgen extra hojiblanca abril 500ml,3.59,0.0,0.0,420.7,0.0,823.0,aceite oliva virgen extra hojiblanca abril 500ml aceite aceites,0.9823,0.0,0.0,aceites
+aceite de oliva virgen extra picual finca la pontezuela 500ml,4.85,0.0,0.0,420.7,0.0,823.0,aceite de oliva virgen extra picual finca la pontezuela 500ml aceite aceites,0.9755,0.0,0.0,aceites
+aceite de oliva virgen extra abril 500ml,3.59,0.0,0.0,420.7,0.0,823.0,aceite de oliva virgen extra abril 500ml aceite aceites,0.9823,0.0,0.0,aceites
+aceite de oliva virgen extra picual oro bailen 500ml,12.87,0.0,0.0,91.4,0.0,824.0,aceite de oliva virgen extra picual oro bailen 500ml aceite aceites,0.932,0.0,0.0,aceites
+aceite de oliva virgen extra oda no 5 maestros de hojiblanca 500ml,4.49,0.0,0.0,420.7,0.0,823.0,aceite de oliva virgen extra oda no 5 maestros de hojiblanca 500ml aceite aceites,0.9774,0.0,0.0,aceites
+aceite oliva virgen extra hojiblanca 5l,23.75,0.0,0.0,91.0,0.0,821.0,aceite oliva virgen extra hojiblanca 5l aceite aceites,0.8731,0.0,0.0,aceites
+aceite de oliva virgen extra variedad picual coosur olivares centenarios 1l,5.99,0.0,0.0,420.7,0.0,823.0,aceite de oliva virgen extra variedad picual coosur olivares centenarios 1l aceite aceites,0.9693,0.0,0.0,aceites
+arroz alipende 1kg redondo,1.3,674.0,759.0,109.5,10.0,345.5,arroz alipende 1kg redondo arroz arroz,0.9947,1.43,1.25,arroz
+arroz sos 1kg granza,1.88,859.0,759.0,11960.0,10.0,345.5,arroz sos 1kg granza arroz arroz,0.9916,1.83,0.0,arroz
+arroz redondo brillante pack 2,1.25,674.0,759.0,109.5,10.0,345.5,arroz redondo brillante pack 2 arroz arroz,0.995,1.43,1.25,arroz
+arroz integral alipende 1kg redondo,1.65,674.0,759.0,109.5,10.0,345.5,arroz integral alipende 1kg redondo arroz arroz,0.9928,1.43,1.25,arroz
+arroz redondo brillante pack 2 xl,2.35,674.0,759.0,109.5,10.0,345.5,arroz redondo brillante pack 2 xl arroz arroz,0.989,1.43,1.25,arroz
+arroz de valencia dacsa 1kg,2.07,7.69,759.0,1.0,2.1,344.0,arroz de valencia dacsa 1kg arroz arroz,0.9905,0.02,0.0,arroz
+arroz sabroz brillante 1kg redondo,2.78,599.0,759.0,119.0,10.0,345.5,arroz sabroz brillante 1kg redondo arroz arroz,0.9867,1.27,1.08,arroz
+arroz especial paellas sos 1kg,2.95,674.0,759.0,109.5,10.0,345.5,arroz especial paellas sos 1kg arroz arroz,0.9858,1.43,1.25,arroz
+arroz do calasparra esperanza 1kg,3.54,749.0,759.0,100.0,10.0,347.0,arroz do calasparra esperanza 1kg arroz arroz,0.9826,1.59,1.41,arroz
+pluma alipende 1kg no5,1.2,12.0,70.0,1.59,3.69,349.0,pluma alipende 1kg no5 pluma pasta,0.9952,0.03,0.02,pasta
+macarrones garofalo 500g penne ziti rigate,1.39,43.0,70.0,2.0,3.69,349.0,macarrones garofalo 500g penne ziti rigate macarrones pasta,0.9942,0.09,0.08,pasta
+rigatoni garofalo 500g,1.39,43.0,70.0,2.0,3.69,349.0,rigatoni garofalo 500g rigatoni pasta,0.9942,0.09,0.08,pasta
+radiatori garofalo 500g,1.39,43.0,70.0,2.0,3.69,349.0,radiatori garofalo 500g radiatori pasta,0.9942,0.09,0.08,pasta
+tiburon alipende 500g,0.8,129.0,70.0,1.59,3.69,349.0,tiburon alipende 500g tiburon pasta,0.9974,0.27,0.27,pasta
+pluma no6 gallo 400g,1.0,12.0,68.0,2.0,3.0,344.0,pluma no6 gallo 400g pluma pasta,0.9963,0.03,0.01,pasta
+fideua alipende 500g,0.8,12.0,709.0,1.59,3.69,349.0,fideua alipende 500g fideua pasta,0.9974,0.03,0.0,pasta
+espirales alipende 500g con vegetales,1.1,12.0,70.0,29.0,4.0,354.0,espirales alipende 500g con vegetales espirales pasta,0.9958,0.03,0.0,pasta
+macarron integral gallo 450g,1.88,13.0,70.0,2.0,3.69,349.0,macarron integral gallo 450g macarron pasta,0.9916,0.03,0.02,pasta
+cous cous gallo 500g mediano,2.02,13.0,70.0,2.0,3.69,349.0,cous cous gallo 500g mediano cous pasta,0.9908,0.03,0.02,pasta
+pajaritas alipende 500g con vegetales,1.1,12.0,70.0,2.0,4.0,354.0,pajaritas alipende 500g con vegetales pajaritas pasta,0.9958,0.03,0.02,pasta
+pluma alipende 500g no5,0.8,12.0,70.0,159.0,3.69,349.0,pluma alipende 500g no5 pluma pasta,0.9974,0.03,0.0,pasta
+helices gallo xl al bronce 450g,1.39,14.0,66.0,2.0,3.0,344.0,helices gallo xl al bronce 450g helices pasta,0.9942,0.03,0.02,pasta
+espirales alipende 500g,0.8,12.0,70.0,159.0,3.69,349.0,espirales alipende 500g espirales pasta,0.9974,0.03,0.0,pasta
+macarrones al huevo gallo 450g,1.75,139.0,70.0,279.0,309.0,349.0,macarrones al huevo gallo 450g macarrones pasta,0.9923,0.3,0.56,pasta
+elicoidale garofalo 500g,1.39,13.0,70.0,2.0,3.69,349.0,elicoidale garofalo 500g elicoidale pasta,0.9942,0.03,0.02,pasta
+macarron rayado alipende 500g con vegetales,1.1,129.0,70.0,2.0,49.0,349.0,macarron rayado alipende 500g con vegetales macarron pasta,0.9958,0.27,0.34,pasta
+pluma no3 gallo 400g,1.15,12.0,68.0,2.0,3.0,344.0,pluma no3 gallo 400g pluma pasta,0.9955,0.03,0.01,pasta
+plumas sin gluten gallo 450g,2.49,13.0,70.0,2.0,3.69,349.0,plumas sin gluten gallo 450g plumas pasta,0.9882,0.03,0.02,pasta
+plumas gallo xl al bronce 450g,1.39,14.0,66.0,2.0,3.0,344.0,plumas gallo xl al bronce 450g plumas pasta,0.9942,0.03,0.02,pasta
+lenteja cocida alipende 400g,0.9,6.6,139.0,0.0,4.69,88.0,lenteja cocida alipende 400g lenteja legumbres,0.9969,0.01,0.0,legumbres
+lenteja alipende 1kg pardina,2.05,249.0,369.0,1.99,259.0,307.0,lenteja alipende 1kg pardina lenteja legumbres,0.9906,0.53,0.89,legumbres
+lenteja luengo 1kg pardina,3.95,249.0,329.0,19.0,259.0,301.0,lenteja luengo 1kg pardina lenteja legumbres,0.9803,0.53,0.88,legumbres
+lenteja pardina cocida luengo 400g,1.3,249.0,329.0,19.0,259.0,301.0,lenteja pardina cocida luengo 400g lenteja legumbres,0.9947,0.53,0.88,legumbres
+lentejas de la abuela litoral 425g,1.95,5.79,8.9,279.0,3.69,90.0,lentejas de la abuela litoral 425g lentejas legumbres,0.9912,0.01,0.0,legumbres
+lentejas riojana litoral 425g,2.35,569.0,329.0,19.0,290.0,301.0,lentejas riojana litoral 425g lentejas legumbres,0.989,1.21,1.61,legumbres
+lenteja pardina calidad extra miau 1 kg,2.75,249.0,329.0,19.0,259.0,301.0,lenteja pardina calidad extra miau 1 kg lenteja legumbres,0.9868,0.53,0.88,legumbres
+lenteja alipende 1kg castellana,2.1,249.0,369.0,19.0,259.0,307.0,lenteja alipende 1kg castellana lenteja legumbres,0.9904,0.53,0.87,legumbres
+lenteja parda roja alipende 1k,1.99,259.0,329.0,21.0,279.0,301.0,lenteja parda roja alipende 1k lenteja legumbres,0.991,0.55,0.93,legumbres
+lenteja verdina calidad extra miau 1k,2.5,249.0,329.0,19.0,259.0,301.0,lenteja verdina calidad extra miau 1k lenteja legumbres,0.9882,0.53,0.88,legumbres
+atun claro alipende pack 6 en aceite oliva,4.9,19.0,0.0,23.0,514.5,183.0,atun claro alipende pack 6 en aceite oliva atun pescado,0.9752,0.04,0.85,pescado
+atun claro alipende pack 6 al natural,4.2,19.0,0.0,23.0,514.5,183.0,atun claro alipende pack 6 al natural atun pescado,0.979,0.04,0.85,pescado
+atun claro en aceite oliva alipende pack 3,2.89,19.0,0.0,23.0,514.5,183.0,atun claro en aceite oliva alipende pack 3 atun pescado,0.9861,0.04,0.85,pescado
+atun claro alipende pack 6 en aceite girasol,4.3,19.0,0.0,23.0,514.5,183.0,atun claro alipende pack 6 en aceite girasol atun pescado,0.9784,0.04,0.85,pescado
+atun claro alipende pack 3 en escabeche,2.65,19.0,0.0,23.0,514.5,183.0,atun claro alipende pack 3 en escabeche atun pescado,0.9874,0.04,0.85,pescado
+atun claro alipende pack 6 en aceite oliva virgen extra,5.8,19.0,0.0,23.0,514.5,183.0,atun claro alipende pack 6 en aceite oliva virgen extra atun pescado,0.9703,0.04,0.85,pescado
+atun claro albo pack3 aceite oliva,5.59,19.0,0.0,23.0,514.5,183.0,atun claro albo pack3 aceite oliva atun pescado,0.9715,0.04,0.85,pescado
+atun ribeira pack 6 en aceite girasol,3.59,19.0,0.0,23.0,514.5,183.0,atun ribeira pack 6 en aceite girasol atun pescado,0.9823,0.04,0.85,pescado
+atun albo pack 3 en aceite oliva virgen extra,5.59,19.0,0.0,23.0,514.5,183.0,atun albo pack 3 en aceite oliva virgen extra atun pescado,0.9715,0.04,0.85,pescado
+atun claro en aceite oliva alipende 140g,3.7,3.0,5.0,5.0,514.5,183.0,atun claro en aceite oliva alipende 140g atun pescado,0.9817,0.01,0.83,pescado
+atun ventresca en aceite de oliva escuris 73g,4.5,19.0,0.0,23.0,514.5,183.0,atun ventresca en aceite de oliva escuris 73g atun pescado,0.9774,0.04,0.85,pescado
+atun alipende 260g en girasol,3.29,19.0,0.0,23.0,0.0,183.0,atun alipende 260g en girasol atun pescado,0.9839,0.04,0.02,pescado
+atun claro alipende pack 3 al natural,2.65,19.0,0.0,23.0,514.5,183.0,atun claro alipende pack 3 al natural atun pescado,0.9874,0.04,0.85,pescado
+atun claro en aceite de girasol calvo pack 6,4.5,20.0,0.0,23.0,514.5,286.0,atun claro en aceite de girasol calvo pack 6 atun pescado,0.9774,0.04,0.85,pescado
+atun claro ligero en aceite de oliva virgen alipende pack 3,2.89,19.0,0.0,23.0,514.5,183.0,atun claro ligero en aceite de oliva virgen alipende pack 3 atun pescado,0.9861,0.04,0.85,pescado
+atun alipende 650g en escabeche,6.99,19.0,0.0,23.0,900.0,142.0,atun alipende 650g en escabeche atun pescado,0.9639,0.04,1.47,pescado
+atun claro calvo pack 3 ligero en aceite oliva,4.5,19.0,0.0,678.0,514.5,183.0,atun claro calvo pack 3 ligero en aceite oliva atun pescado,0.9774,0.04,0.32,pescado
+atun alipende 52g pack 3 en tomate,2.1,19.0,0.0,23.0,514.5,183.0,atun alipende 52g pack 3 en tomate atun pescado,0.9904,0.04,0.85,pescado
+atun bajo en sal calvo pack 3 en aceite oliva,4.5,21.0,0.0,219.0,514.5,278.0,atun bajo en sal calvo pack 3 en aceite oliva atun pescado,0.9774,0.04,0.69,pescado
+atun alipende 650g en aceite girasol,6.5,19.0,0.0,23.0,900.0,183.0,atun alipende 650g en aceite girasol atun pescado,0.9665,0.04,1.47,pescado
+galleta maria alipende 800g dorada,1.4,7.8,76.0,15.5,6.195,422.0,galleta maria alipende 800g dorada galleta desayuno_snacks,0.9942,0.02,0.0,desayuno_snacks
+galleta la buena maria fontaneda 707g,2.8,7.7,76.0,11.0,229.0,438.0,galleta la buena maria fontaneda 707g galleta desayuno_snacks,0.9866,0.02,0.36,desayuno_snacks
+galleta maria alipende 800g,1.4,7.8,6.0,15.5,269.0,422.0,galleta maria alipende 800g galleta desayuno_snacks,0.9942,0.02,0.43,desayuno_snacks
+galletas maria dorada sin azucares anadidos gullon zero 400g,2.35,7.3,719.0,14.0,15.0,422.0,galletas maria dorada sin azucares anadidos gullon zero 400g galletas desayuno_snacks,0.989,0.02,0.0,desayuno_snacks
+galleta maria alipende 800g integral,1.4,7.8,76.0,15.5,6.195,422.0,galleta maria alipende 800g integral galleta desayuno_snacks,0.9942,0.02,0.0,desayuno_snacks
+galletas marbu dorada artiach 600+200g,3.37,6.59,73.0,17.0,2.0,475.0,galletas marbu dorada artiach 600+200g galletas desayuno_snacks,0.9835,0.01,0.0,desayuno_snacks
+galleta gullon dorada 600g + 200g,2.49,7.8,76.0,15.5,6.195,422.0,galleta gullon dorada 600g + 200g galleta desayuno_snacks,0.9882,0.02,0.0,desayuno_snacks
+galletas maria oro de cuetara 600g + 33%,3.39,7.8,76.0,15.5,6.195,422.0,galletas maria oro de cuetara 600g + 33% galletas desayuno_snacks,0.9834,0.02,0.0,desayuno_snacks
+galleta integral marielu fontaneda 520g,3.9,729.0,68.0,17.0,4.49,466.0,galleta integral marielu fontaneda 520g galleta desayuno_snacks,0.9806,1.55,1.54,desayuno_snacks
+galleta sin azucar anadido marbu dorada 300+100gr,2.49,6.59,65.0,17.0,439.0,422.0,galleta sin azucar anadido marbu dorada 300+100gr galleta desayuno_snacks,0.9882,0.01,0.69,desayuno_snacks
+galleta dorada marbu artiach 600g,3.37,7.8,76.0,15.5,6.195,422.0,galleta dorada marbu artiach 600g galleta desayuno_snacks,0.9835,0.02,0.0,desayuno_snacks
+galletas maria dorada pack 3 economico gullon 600g,2.49,6.39,70.0,19.0,6.195,480.0,galletas maria dorada pack 3 economico gullon 600g galletas desayuno_snacks,0.9882,0.01,0.0,desayuno_snacks
+galletas maria sin azucar anadido zero gullon 400+200g,2.65,7.0,759.0,11.0,4.59,408.0,galletas maria sin azucar anadido zero gullon 400+200g galletas desayuno_snacks,0.9874,0.01,0.0,desayuno_snacks
+cereales rellenos de chocolate chocoflakes cuetara 520g,2.99,7.8,739.0,15.5,350.0,422.0,cereales rellenos de chocolate chocoflakes cuetara 520g cereales desayuno_snacks,0.9855,0.02,0.44,desayuno_snacks
+muesli crujiente alipende 500g con chocolate negro,2.35,7.8,69.0,1529.0,4.69,134.0,muesli crujiente alipende 500g con chocolate negro muesli desayuno_snacks,0.989,0.02,0.0,desayuno_snacks
+cereales rellenos de cacao y avellana sin gluten alipende 500g,2.5,539.0,669.0,15.5,199.0,451.0,cereales rellenos de cacao y avellana sin gluten alipende 500g cereales desayuno_snacks,0.9882,1.15,1.35,desayuno_snacks
+cereales de arroz inflado cacao s/gluten alipende 500g,2.1,7.8,76.0,15.5,6.195,422.0,cereales de arroz inflado cacao s/gluten alipende 500g cereales desayuno_snacks,0.9904,0.02,0.0,desayuno_snacks
+cereales con chocolate choco krispies de kellogg s 420g,2.95,6.39,84.0,1.99,3.89,386.0,cereales con chocolate choco krispies de kellogg s 420g cereales desayuno_snacks,0.9858,0.01,0.0,desayuno_snacks
+galletas choco crujientes alipende 520g,2.65,7.8,71.0,14.0,6.195,445.0,galletas choco crujientes alipende 520g galletas desayuno_snacks,0.9874,0.02,0.0,desayuno_snacks
+cereales alipende 500g bolas con cacao,1.75,7.8,76.0,15.5,6.195,422.0,cereales alipende 500g bolas con cacao cereales desayuno_snacks,0.9923,0.02,0.0,desayuno_snacks
+cereales integrales de chocolate chocapic 375g,3.39,8.99,73.69,4.89,7.79,389.0,cereales integrales de chocolate chocapic 375g cereales desayuno_snacks,0.9834,0.02,0.01,desayuno_snacks
+cereales de avena y cholocate negro granola special k kellogg's 320 gr,2.9,9.39,659.0,17.0,6.0,469.0,cereales de avena y cholocate negro granola special k kellogg's 320 gr cereales desayuno_snacks,0.986,0.02,0.0,desayuno_snacks
+cereales alipende 500g copos de cacao,1.99,629.0,79.69,199.0,5.19,370.0,cereales alipende 500g copos de cacao cereales desayuno_snacks,0.991,1.34,1.18,desayuno_snacks
+cereales con chocolate negro special k 325g,3.85,8.29,81.0,6.19,6.0,424.0,cereales con chocolate negro special k 325g cereales desayuno_snacks,0.9809,0.02,0.0,desayuno_snacks
+mini galletas the simpsons crunchy arluy 400 g,3.99,5.29,72.0,17.0,259.0,467.0,mini galletas the simpsons crunchy arluy 400 g mini desayuno_snacks,0.9801,0.01,0.4,desayuno_snacks
+cereales choco&nut krave de kellogg s 410g,3.5,7.8,76.0,15.5,6.195,422.0,cereales choco&nut krave de kellogg s 410g cereales desayuno_snacks,0.9828,0.02,0.0,desayuno_snacks
+cereales integrales con chocolate negro nestle 375g,4.25,7.8,76.0,260.0,248.0,422.0,cereales integrales con chocolate negro nestle 375g cereales desayuno_snacks,0.9787,0.02,0.19,desayuno_snacks
+cereales kellogg's 375g extra con chocolate y avellanas,3.99,7.8,76.0,115.0,6.195,422.0,cereales kellogg's 375g extra con chocolate y avellanas cereales desayuno_snacks,0.9801,0.02,0.0,desayuno_snacks
+cereales oreo o s 320g,3.99,7.9,81.0,2.19,3.99,382.0,cereales oreo o s 320g cereales desayuno_snacks,0.9801,0.02,0.0,desayuno_snacks
+cereales sin azucar anadido sin gluten chocozero esgir 300g,2.59,7.8,78.359,3.799,5.69,357.0,cereales sin azucar anadido sin gluten chocozero esgir 300g cereales desayuno_snacks,0.9877,0.02,0.01,desayuno_snacks
+harina de avena area proteica 900g chocolate,3.85,7.8,76.0,15.5,6.195,422.0,harina de avena area proteica 900g chocolate harina desayuno_snacks,0.9809,0.02,0.0,desayuno_snacks
+cereales integrales chocolate all-bran kellogg's 375g,3.99,7.8,76.0,15.5,6.195,422.0,cereales integrales chocolate all-bran kellogg's 375g cereales desayuno_snacks,0.9801,0.02,0.0,desayuno_snacks
+cereales kit kat nestle 330g,3.69,7.89,69.49,10.99,6.39,420.0,cereales kit kat nestle 330g cereales desayuno_snacks,0.9818,0.02,0.0,desayuno_snacks
+cafe con leche nescafe dolce gusto 16 capsulas,4.95,2128.0,250.0,2.0,5.0,42.0,cafe con leche nescafe dolce gusto 16 capsulas cafe cafe_infusiones,0.9749,4.53,4.52,cafe_infusiones
+cafe blonde espresso roast intensidad 6 starbucks 10 caps,3.99,2128.0,38.3,19.29,7.1,42.0,cafe blonde espresso roast intensidad 6 starbucks 10 caps cafe cafe_infusiones,0.9801,4.53,4.55,cafe_infusiones
+cafe espresso ristretto intensidad 12 marcilla 20 caps,5.99,2128.0,38.3,19.29,7.1,42.0,cafe espresso ristretto intensidad 12 marcilla 20 caps cafe cafe_infusiones,0.9693,4.53,4.55,cafe_infusiones
+capsulas de cafe brasil intensidad 8 nescafe 10 capsulas,3.69,2128.0,38.3,19.29,7.1,42.0,capsulas de cafe brasil intensidad 8 nescafe 10 capsulas capsulas cafe_infusiones,0.9818,4.53,4.55,cafe_infusiones
+cafe con caramelo intensidad 5 starbucks 10 capsulas,3.99,2128.0,38.3,19.29,7.1,42.0,cafe con caramelo intensidad 5 starbucks 10 capsulas cafe cafe_infusiones,0.9801,4.53,4.55,cafe_infusiones
+cafe con leche nescafe dolce gusto 30 capsulas,8.55,222.0,38.3,22.0,7.1,45.0,cafe con leche nescafe dolce gusto 30 capsulas cafe cafe_infusiones,0.9554,0.47,0.46,cafe_infusiones
+cafe soluble nescafe natural 200g,8.5,2128.0,38.3,19.29,7.1,42.0,cafe soluble nescafe natural 200g cafe cafe_infusiones,0.9557,4.53,4.55,cafe_infusiones
+cafe espresso ristretto intensidad 11 l or 20 caps.,8.15,2128.0,38.3,19.29,7.1,42.0,cafe espresso ristretto intensidad 11 l or 20 caps. cafe cafe_infusiones,0.9576,4.53,4.55,cafe_infusiones
+capsulas de cafe classico intensidad 12 gimoka 20 capsulas,3.8,2128.0,38.3,19.29,7.1,42.0,capsulas de cafe classico intensidad 12 gimoka 20 capsulas capsulas cafe_infusiones,0.9812,4.53,4.55,cafe_infusiones
+cafe expresso ristretto intensidad 12 marcilla 50 capsulas,13.99,2128.0,38.3,19.29,7.1,42.0,cafe expresso ristretto intensidad 12 marcilla 50 capsulas cafe cafe_infusiones,0.926,4.53,4.55,cafe_infusiones
+cafe descafeinado espresso intensidad 6 marcilla 20 capsulas,5.99,2128.0,38.3,19.29,7.1,42.0,cafe descafeinado espresso intensidad 6 marcilla 20 capsulas cafe cafe_infusiones,0.9693,4.53,4.55,cafe_infusiones
+cafe espresso intenso nescafe dolce gusto 30 capsulas,8.55,2128.0,38.3,19.29,7.1,42.0,cafe espresso intenso nescafe dolce gusto 30 capsulas cafe cafe_infusiones,0.9554,4.53,4.55,cafe_infusiones
+cafe con leche descafeinado nescafe dolce gusto 16 capsulas,4.95,2279.0,35.59,19.29,11.69,39.0,cafe con leche descafeinado nescafe dolce gusto 16 capsulas cafe cafe_infusiones,0.9749,4.85,4.88,cafe_infusiones
+capsulas de cafe india intensidad 9 nescafe 10 capsulas,3.69,2128.0,38.3,19.29,7.1,42.0,capsulas de cafe india intensidad 9 nescafe 10 capsulas capsulas cafe_infusiones,0.9818,4.53,4.55,cafe_infusiones
+cafe ristretto shot intensidad 11 starbucks 10 capsulas,3.99,2128.0,38.3,19.29,7.1,42.0,cafe ristretto shot intensidad 11 starbucks 10 capsulas cafe cafe_infusiones,0.9801,4.53,4.55,cafe_infusiones
+cafe house blend lungo intensidad 8 starbucks 10 caps,3.99,2128.0,38.3,19.29,7.1,42.0,cafe house blend lungo intensidad 8 starbucks 10 caps cafe cafe_infusiones,0.9801,4.53,4.55,cafe_infusiones
+queso havarti lonchas arla 175 gr,2.49,19.0,0.5,38.0,4.54,422.0,queso havarti lonchas arla 175 gr queso quesos,0.9882,0.04,0.01,quesos
+queso en dados en salmuera arla 200g,3.99,21.5,1.645,32.5,4.54,422.0,queso en dados en salmuera arla 200g queso quesos,0.9801,0.05,0.02,quesos
+rallado cheddar& mozzarella arla 175 gr especial para horno,2.49,24.0,2.79,27.0,4.54,422.0,rallado cheddar& mozzarella arla 175 gr especial para horno rallado quesos,0.9882,0.05,0.03,quesos
+queso semicurado alipende,11.95,21.5,1.645,32.5,4.54,422.0,queso semicurado alipende queso quesos,0.937,0.05,0.02,quesos
+queso mezcla semicurado campo real,16.99,21.5,1.645,32.5,4.54,422.0,queso mezcla semicurado campo real queso quesos,0.9097,0.05,0.02,quesos
+queso semicurado garcia baquero,16.99,21.5,1.645,32.5,4.54,422.0,queso semicurado garcia baquero queso quesos,0.9097,0.05,0.02,quesos
+queso de cabra semicurado marcos conde,16.99,21.5,1.645,32.5,4.54,422.0,queso de cabra semicurado marcos conde queso quesos,0.9097,0.05,0.02,quesos
+lubina racion pieza de aprox 400g,5.99,19.0,0.0,23.0,514.5,183.0,lubina racion pieza de aprox 400g lubina pescado,0.9693,0.04,0.85,pescado
+merluza por medias o enteras,17.99,19.0,0.0,23.0,514.5,183.0,merluza por medias o enteras merluza pescado,0.9043,0.04,0.85,pescado
+bacalao en filetes,19.99,19.0,0.0,23.0,514.5,183.0,bacalao en filetes bacalao pescado,0.8935,0.04,0.85,pescado
+dorada superior 800g - 1kg,17.99,19.0,0.0,23.0,514.5,183.0,dorada superior 800g - 1kg dorada pescado,0.9043,0.04,0.85,pescado
+congrio en rodajas,9.99,19.0,0.0,23.0,514.5,183.0,congrio en rodajas congrio pescado,0.9476,0.04,0.85,pescado
+rape hueso,14.99,19.0,0.0,23.0,514.5,183.0,rape hueso rape pescado,0.9206,0.04,0.85,pescado
+"corvina origen alicante 1,5kg aproximadamente",11.99,19.0,0.0,23.0,514.5,183.0,"corvina origen alicante 1,5kg aproximadamente corvina pescado",0.9368,0.04,0.85,pescado
+merluza en rodajas,25.99,19.0,0.0,23.0,514.5,183.0,merluza en rodajas merluza pescado,0.861,0.04,0.85,pescado
+lubina superior 800g -1kg,18.99,19.0,0.0,23.0,514.5,183.0,lubina superior 800g -1kg lubina pescado,0.8989,0.04,0.85,pescado
+alas merluza austral,8.99,19.0,0.0,23.0,514.5,183.0,alas merluza austral alas pescado,0.9531,0.04,0.85,pescado
+mendo,9.99,19.0,0.0,23.0,514.5,183.0,mendo mendo pescado,0.9476,0.04,0.85,pescado
+gallineta en filetes de 100-200g aproximadamente,13.99,19.0,0.0,23.0,514.5,183.0,gallineta en filetes de 100-200g aproximadamente gallineta pescado,0.926,0.04,0.85,pescado
+lenguado rubio gordo,29.99,19.0,0.0,23.0,514.5,183.0,lenguado rubio gordo lenguado pescado,0.8393,0.04,0.85,pescado
+merluza en filete empanado mowi bandeja,3.75,8.0,0.0,23.0,129.0,191.0,merluza en filete empanado mowi bandeja merluza pescado,0.9814,0.02,0.2,pescado
+pez espada rodaja gourmar bandeja,3.75,169.0,0.0,23.0,514.5,183.0,pez espada rodaja gourmar bandeja pez pescado,0.9814,0.36,1.17,pescado
+hamburguesa fuentes 160g pez espada,2.99,18.0,0.9,0.77,514.5,82.7,hamburguesa fuentes 160g pez espada hamburguesa pescado,0.9855,0.04,0.86,pescado
+bacalao desmigado ederpesca 200g desalado,5.49,19.0,0.0,23.0,514.5,60.0,bacalao desmigado ederpesca 200g desalado bacalao pescado,0.972,0.04,0.85,pescado
+huevos camperos alipende 12 unidades,3.5,1259.0,0.19,11.19,4.5,150.0,huevos camperos alipende 12 unidades huevos huevos,0.9828,2.68,2.69,huevos
+huevos camperos pazo de vilane 12 unidades,4.49,1259.0,0.19,11.19,4.5,150.0,huevos camperos pazo de vilane 12 unidades huevos huevos,0.9774,2.68,2.69,huevos
+"huevos camperos alipende 6u ""clase l-xl""",2.7,1259.0,0.19,11.19,9.0,150.0,"huevos camperos alipende 6u ""clase l-xl"" huevos huevos",0.9871,2.68,2.7,huevos
+huevos ecologicos m-l rujamar 8 unidades,3.95,1259.0,0.19,11.19,4.5,150.0,huevos ecologicos m-l rujamar 8 unidades huevos huevos,0.9803,2.68,2.69,huevos
+huevos camperos la quinteria de rujamar 12 unidades m-l,4.25,1259.0,0.19,11.19,4.5,150.0,huevos camperos la quinteria de rujamar 12 unidades m-l huevos huevos,0.9787,2.68,2.69,huevos
+huevos ecologicos alipende 6u clase l-xl,3.65,1259.0,0.19,11.19,4.5,150.0,huevos ecologicos alipende 6u clase l-xl huevos huevos,0.982,2.68,2.69,huevos
+"huevos ecologicos alipende 6u ""clase m-l""",2.99,1259.0,0.19,11.19,0.0,150.0,"huevos ecologicos alipende 6u ""clase m-l"" huevos huevos",0.9855,2.68,2.69,huevos
+huevos camperos tamano m-l corral monegros 6 unidades,3.05,1259.0,0.19,11.19,4.5,150.0,huevos camperos tamano m-l corral monegros 6 unidades huevos huevos,0.9852,2.68,2.69,huevos
+refresco cola coca-cola 33cl pack 12 zero zero sin cafeina,11.16,0.0,0.0,0.0,4.0,0.2,refresco cola coca-cola 33cl pack 12 zero zero sin cafeina refresco bebidas,0.9413,0.0,0.01,bebidas
+refresco cola coca-cola lata 33cl pack 12 zero,11.16,0.0,0.0,0.0,4.0,0.2,refresco cola coca-cola lata 33cl pack 12 zero refresco bebidas,0.9413,0.0,0.01,bebidas
+refresco cola coca-cola lata pack 12 33cl,11.16,0.0,10.69,0.0,4.0,42.0,refresco cola coca-cola lata pack 12 33cl refresco bebidas,0.9413,0.0,0.0,bebidas
+refresco cola coca-cola 2l pack 2,4.1,0.0,10.69,0.0,4.0,2.0,refresco cola coca-cola 2l pack 2 refresco bebidas,0.9795,0.0,0.0,bebidas
+refresco cola coca-cola botella 2l pack 4,8.08,0.0,10.69,0.0,4.0,2.0,refresco cola coca-cola botella 2l pack 4 refresco bebidas,0.958,0.0,0.0,bebidas
+refresco cola coca-cola mini lata 20cl pack 6 zero,4.15,0.0,0.0,0.0,4.0,0.2,refresco cola coca-cola mini lata 20cl pack 6 zero refresco bebidas,0.9793,0.0,0.01,bebidas
+refresco cola coca-cola mini lata 20cl pack 6 zero zero,4.15,0.0,0.0,0.0,4.0,0.2,refresco cola coca-cola mini lata 20cl pack 6 zero zero refresco bebidas,0.9793,0.0,0.01,bebidas
+refresco de cola sin azucar alipende 2l zero,0.8,0.0,10.0,0.0,4.0,4.0,refresco de cola sin azucar alipende 2l zero refresco bebidas,0.9974,0.0,0.0,bebidas
+cerveza sin gluten mahou 5 estrellas lata 33cl,0.87,0.49,3.99,0.0,4.0,49.0,cerveza sin gluten mahou 5 estrellas lata 33cl cerveza bebidas,0.997,0.0,0.01,bebidas
+cerveza rubia especial heineken pack 6 botellas 25cl,3.59,0.0,329.0,0.0,4.0,42.0,cerveza rubia especial heineken pack 6 botellas 25cl cerveza bebidas,0.9823,0.0,0.0,bebidas
+cerveza rubia especial mahou 5 estrellas pack 12 latas 33cl,10.08,40.0,10.0,0.0,4.0,4.0,cerveza rubia especial mahou 5 estrellas pack 12 latas 33cl cerveza bebidas,0.9472,0.09,0.09,bebidas
+cerveza rubia victoria lata 33cl,0.63,0.0,10.0,0.0,4.0,4.0,cerveza rubia victoria lata 33cl cerveza bebidas,0.9983,0.0,0.0,bebidas
+cerveza rubia mahou clasica pack 12 latas 33cl,9.24,39.0,10.0,0.0,4.0,4.0,cerveza rubia mahou clasica pack 12 latas 33cl cerveza bebidas,0.9517,0.08,0.09,bebidas
+cerveza rubia mahou 5* 33cl p16,13.28,0.0,10.0,0.0,4.0,4.0,cerveza rubia mahou 5* 33cl p16 cerveza bebidas,0.9298,0.0,0.0,bebidas
+cerveza rubia especial heineken lata 33cl,0.59,0.0,10.0,0.0,4.0,4.0,cerveza rubia especial heineken lata 33cl cerveza bebidas,0.9985,0.0,0.0,bebidas
+cerveza sin filtrar aguila bot. 33cl,0.75,0.59,429.0,0.0,4.0,4.0,cerveza sin filtrar aguila bot. 33cl cerveza bebidas,0.9977,0.0,0.0,bebidas
+cerveza dorada 1906 pack 6 botellas 33cl,7.47,0.0,3.99,0.0,4.0,4.0,cerveza dorada 1906 pack 6 botellas 33cl cerveza bebidas,0.9613,0.0,0.01,bebidas
+zumo de naranja sin pulpa exprimido don simon 1l,2.42,0.0,10.0,0.0,4.0,4.0,zumo de naranja sin pulpa exprimido don simon 1l zumo bebidas,0.9886,0.0,0.0,bebidas
+zumo de naranja con pulpa exprimido don simon 1l,2.42,0.0,10.0,0.0,4.0,4.0,zumo de naranja con pulpa exprimido don simon 1l zumo bebidas,0.9886,0.0,0.0,bebidas
+zumo de naranja 100% exprimida con pulpa alipende 1l,1.9,0.0,10.0,0.0,4.0,4.0,zumo de naranja 100% exprimida con pulpa alipende 1l zumo bebidas,0.9914,0.0,0.0,bebidas
+zumo refrigerado con pulpa exprimido summum 750ml naranja,2.09,69.0,819.0,0.19,29.0,35.0,zumo refrigerado con pulpa exprimido summum 750ml naranja zumo bebidas,0.9904,0.15,0.06,bebidas
+zumo concentrado alipende 1l naranja-mandarina,1.29,69.0,10.0,0.1,4.0,4.0,zumo concentrado alipende 1l naranja-mandarina zumo bebidas,0.9947,0.15,0.15,bebidas
+zumo de naranja sin pulpa 100% natural de la huerta don simon 1l,2.95,0.6,10.0,0.1,0.1,41.0,zumo de naranja sin pulpa 100% natural de la huerta don simon 1l zumo bebidas,0.9858,0.0,0.0,bebidas
+nectar de naranja disfruta 2l,3.6,0.0,10.0,0.0,4.0,4.0,nectar de naranja disfruta 2l nectar bebidas,0.9822,0.0,0.0,bebidas
+zumo de naranja 100% exprimida con pulpa aipende 1l,2.1,0.0,100.0,0.0,4.0,4.0,zumo de naranja 100% exprimida con pulpa aipende 1l zumo bebidas,0.9904,0.0,0.0,bebidas
+nectar de naranja disfruta pack 6,2.5,0.0,10.0,0.0,4.0,4.0,nectar de naranja disfruta pack 6 nectar bebidas,0.9882,0.0,0.0,bebidas
+nectar de naranja alipende pack 6,1.85,0.0,10.0,0.0,4.0,4.0,nectar de naranja alipende pack 6 nectar bebidas,0.9917,0.0,0.0,bebidas
+nectar de naranja granini 1l,2.99,0.5,10.19,0.5,4.0,45.0,nectar de naranja granini 1l nectar bebidas,0.9855,0.0,0.0,bebidas
+bebida juver 200ml p3 florida,0.84,0.0,10.0,0.0,4.0,4.0,bebida juver 200ml p3 florida bebida bebidas,0.9972,0.0,0.0,bebidas
+bebida florida juver 2l,1.4,0.0,10.0,0.0,4.0,4.0,bebida florida juver 2l bebida bebidas,0.9942,0.0,0.0,bebidas
+"nectar de naranja alipende 1,5l",1.58,39.0,449.0,0.0,0.19,19.0,"nectar de naranja alipende 1,5l nectar bebidas",0.9932,0.08,0.01,bebidas
+zumo de mandarina 100% exprimido don simon 1l,2.0,0.0,10.0,0.0,4.0,4.0,zumo de mandarina 100% exprimido don simon 1l zumo bebidas,0.9909,0.0,0.0,bebidas
+zumo de naranja 100% exprimida sin pulpa alipende 1l,2.1,0.0,109.0,9.0,4.0,4.0,zumo de naranja 100% exprimida sin pulpa alipende 1l zumo bebidas,0.9904,0.0,0.0,bebidas
+refresco en polvo tang sobre 30g naranja,0.87,19.0,10.0,0.0,18.0,4.0,refresco en polvo tang sobre 30g naranja refresco bebidas,0.997,0.04,0.07,bebidas
+nectar de naranja granini 750 ml,1.99,0.0,10.0,0.0,4.0,4.0,nectar de naranja granini 750 ml nectar bebidas,0.991,0.0,0.0,bebidas
+pizza fina alipende 400g barbacoa,2.79,12.6145,28.645,21.0,0.8400000000000001,260.0,pizza fina alipende 400g barbacoa pizza congelados,0.9866,0.03,0.0,congelados
+pizza fina alipende 350g jamon y queso,2.79,12.6145,28.645,21.0,0.8400000000000001,260.0,pizza fina alipende 350g jamon y queso pizza congelados,0.9866,0.03,0.0,congelados
+pizza fina alipende 375g pollo y bacon,2.79,12.6145,28.645,21.0,0.8400000000000001,260.0,pizza fina alipende 375g pollo y bacon pizza congelados,0.9866,0.03,0.0,congelados
+pizza ristorante dr oetker 340g 4 formaggi,3.95,12.6145,28.645,21.0,0.8400000000000001,260.0,pizza ristorante dr oetker 340g 4 formaggi pizza congelados,0.9803,0.03,0.0,congelados
+pizza sin gluten ristorante dr oetker 345g prosciuto,4.65,12.6145,28.645,21.0,0.8400000000000001,260.0,pizza sin gluten ristorante dr oetker 345g prosciuto pizza congelados,0.9766,0.03,0.0,congelados
+pizza fina alipende 375g 6 quesos,2.79,12.6145,28.645,21.0,0.8400000000000001,260.0,pizza fina alipende 375g 6 quesos pizza congelados,0.9866,0.03,0.0,congelados
+pizza americana alipende 570g,3.6,12.6145,28.645,21.0,0.8400000000000001,260.0,pizza americana alipende 570g pizza congelados,0.9822,0.03,0.0,congelados
+pizza rustica dr oetker doble pepperoni 565g,4.79,12.6145,28.645,21.0,0.8400000000000001,260.0,pizza rustica dr oetker doble pepperoni 565g pizza congelados,0.9758,0.03,0.0,congelados
+pizza ristorante dr oetker 375g bolognese,3.95,12.6145,28.645,21.0,0.8400000000000001,260.0,pizza ristorante dr oetker 375g bolognese pizza congelados,0.9803,0.03,0.0,congelados
+pizza casa di mama dr oetker 410g 4 formaggi,4.65,12.6145,28.645,21.0,0.8400000000000001,260.0,pizza casa di mama dr oetker 410g 4 formaggi pizza congelados,0.9766,0.03,0.0,congelados
+pizza ristorante dr oetker 365g funghi,3.95,12.6145,28.645,21.0,0.8400000000000001,260.0,pizza ristorante dr oetker 365g funghi pizza congelados,0.9803,0.03,0.0,congelados
+pizza que la haga rita 425g bianca,5.39,9.339,27.29,9.01,0.8400000000000001,229.0,pizza que la haga rita 425g bianca pizza congelados,0.9725,0.02,0.01,congelados
+pizza ristorante dr oetker 330g speciale,3.95,9.0,239.0,129.0,0.8400000000000001,260.0,pizza ristorante dr oetker 330g speciale pizza congelados,0.9803,0.02,0.0,congelados
+pizza forno di pietra buitoni 350g caprese,3.65,2.0,28.645,21.0,0.8400000000000001,260.0,pizza forno di pietra buitoni 350g caprese pizza congelados,0.982,0.0,0.0,congelados
+pizza casa di mama dr oetker 405g prosciutto,4.65,12.6145,28.645,21.0,0.8400000000000001,260.0,pizza casa di mama dr oetker 405g prosciutto pizza congelados,0.9766,0.03,0.0,congelados
+pizza ristorante dr oetker 390g spinaci,3.95,12.6145,28.645,21.0,0.8400000000000001,260.0,pizza ristorante dr oetker 390g spinaci pizza congelados,0.9803,0.03,0.0,congelados
+helado magnum almendrado mini 6 uds,4.99,4.89,329.0,21.0,0.8400000000000001,152.0,helado magnum almendrado mini 6 uds helado congelados,0.9747,0.01,0.0,congelados
+helado super bombon mini alipende 8uds,2.5,12.6145,28.645,21.0,0.8400000000000001,260.0,helado super bombon mini alipende 8uds helado congelados,0.9882,0.03,0.0,congelados
+helado bombon alipende 6 uds crocanti,2.55,289.0,28.645,21.0,0.8400000000000001,260.0,helado bombon alipende 6 uds crocanti helado congelados,0.9879,0.61,0.6,congelados
+helado bombon mini sin azucares anadidos alipende 8 uds,3.5,12.6145,28.645,21.0,0.8400000000000001,260.0,helado bombon mini sin azucares anadidos alipende 8 uds helado congelados,0.9828,0.03,0.0,congelados
+helado magnum after dinner frac 8 uds,5.49,12.6145,28.645,21.0,0.8400000000000001,260.0,helado magnum after dinner frac 8 uds helado congelados,0.972,0.03,0.0,congelados
+helado bombon magnum mini 6 uds intense dark 70%,5.99,49.0,23.0,19.0,0.8400000000000001,291.0,helado bombon magnum mini 6 uds intense dark 70% helado congelados,0.9693,0.1,0.08,congelados
+helado bombon magnum pistacho 3 unidades,4.99,4.39,32.0,21.0,0.79,335.0,helado bombon magnum pistacho 3 unidades helado congelados,0.9747,0.01,0.0,congelados
+helado bombon mini alipende 8 uds almendrado,3.0,12.6145,28.645,2299.0,0.8400000000000001,260.0,helado bombon mini alipende 8 uds almendrado helado congelados,0.9855,0.03,0.0,congelados
+magnum salted caramel x3 100ml,2.99,3.39,30.0,19.0,0.8400000000000001,309.0,magnum salted caramel x3 100ml magnum congelados,0.9855,0.01,0.0,congelados
+helado magnum classic 3 uds,2.99,471.0,28.645,21.0,0.8400000000000001,260.0,helado magnum classic 3 uds helado congelados,0.9855,1.0,0.99,congelados
+helado bombon alipende 6 uds nata,2.55,12.6145,28.645,21.0,0.8400000000000001,260.0,helado bombon alipende 6 uds nata helado congelados,0.9879,0.03,0.0,congelados
+helado bombon magnum 3+1 uds almendra,4.49,12.6145,28.645,21.0,0.8400000000000001,260.0,helado bombon magnum 3+1 uds almendra helado congelados,0.9774,0.03,0.0,congelados
+helado magnum mini classic 6 uds,2.99,12.6145,28.645,21.0,0.8400000000000001,260.0,helado magnum mini classic 6 uds helado congelados,0.9855,0.03,0.0,congelados
+helado super bombon alipende 270ml 3 uds tres chocolates,2.35,12.6145,28.645,21.0,0.8400000000000001,260.0,helado super bombon alipende 270ml 3 uds tres chocolates helado congelados,0.989,0.03,0.0,congelados
+helado bombon alipende 6 uds crocanti-blanco,3.75,12.6145,28.645,21.0,0.8400000000000001,260.0,helado bombon alipende 6 uds crocanti-blanco helado congelados,0.9814,0.03,0.0,congelados
+nestle maxibon red cheesecake 4x140 ml,6.59,4.39,39.0,16.0,0.89,313.0,nestle maxibon red cheesecake 4x140 ml nestle congelados,0.966,0.01,0.0,congelados
+helado magnum doble chocolate 3 uds,4.99,12.6145,28.645,21.0,0.8400000000000001,260.0,helado magnum doble chocolate 3 uds helado congelados,0.9747,0.03,0.0,congelados
+helado mini milk frigo 10 uds,4.99,12.6145,28.645,21.0,0.8400000000000001,260.0,helado mini milk frigo 10 uds helado congelados,0.9747,0.03,0.0,congelados
+helado kinder chocolate 4 uds,3.99,6.19,31.7,24.29,0.8400000000000001,370.0,helado kinder chocolate 4 uds helado congelados,0.9801,0.01,0.0,congelados
