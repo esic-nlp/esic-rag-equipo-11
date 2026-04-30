@@ -1,207 +1,145 @@
-[![Open in Visual Studio Code](https://classroom.github.com/assets/open-in-vscode-2e0aaae1b6195c2367325f4f02e2d04e9abb55f0b24a779b69b11b9e10269abc.svg)](https://classroom.github.com/online_ide?assignment_repo_id=23100929&assignment_repo_type=AssignmentRepo)
-# Proyecto RAG: Asistente Nutricional de Supermercados
+# 🛒 NutriSearch — Asistente Nutricional de Supermercados
 
-## 📋 Descripción del Proyecto
-
-Este proyecto implementa un **Sistema RAG (Retrieval Augmented Generation)** para crear un asistente nutricional que ayuda a los usuarios a encontrar los mejores productos en supermercados basándose en sus preferencias y necesidades nutricionales.
-
-Es un ejercicio práctico donde aprenderás:
-- ✅ Extracción de datos (web scraping)
-- ✅ Limpieza y preprocesamiento de datos
-- ✅ Generación de embeddings
-- ✅ Búsqueda vectorial con FAISS
-- ✅ Ranking y re-ranking de resultados
+Sistema RAG (Retrieval Augmented Generation) que permite consultar productos del supermercado Ahorramas por sus propiedades nutricionales, precio y categoría, a través de una interfaz web interactiva.
 
 ---
 
-## 🎯 Objetivo
+## 📋 Requisitos previos
 
-Construir un pipeline completo de datos que:
-1. **Adquiera** información de productos de supermercados (nombre, precio, información nutricional)
-2. **Procese** y normalice los datos
-3. **Indexe** los productos usando embeddings semánticos
-4. **Recupere** los productos más relevantes usando búsqueda vectorial
-5. **Rankee** los resultados considerando semántica, valor nutricional y precio
+- Python 3.10 o superior
+- Git
+- Tesseract OCR (solo si se quiere volver a ejecutar el scraper)
 
 ---
 
-## 📁 Estructura del Proyecto
+## 🚀 Instalación y ejecución
 
-```
-esic_rag/
-├── main.py                      # Punto de entrada (integra todo el pipeline)
-├── requirements.txt             # Dependencias del proyecto
-├── README.md                    # Este archivo
-├── data/
-│   ├── raw/                     # Datos sin procesar (output de acquisition.py)
-│   ├── clean/                   # Datos limpios (output de preprocessing.py)
-│   └── ejemplo.json             # Ejemplo de estructura de datos esperada
-│
-└── src/
-    ├── acquisition.py           # 🔨 Extrae datos de supermercados
-    ├── preprocessing.py         # 🔨 Limpia y prepara los datos
-    ├── preprocessing_result.py   # (Resultado esperado de preprocessing.py)
-    └── rag.py                   # ✅ Sistema RAG completo (proporcionado)
+### 1. Clonar el repositorio
+
+```bash
+git clone https://github.com/esic-nlp/esic-rag-equipo-11.git
+cd esic-rag-equipo-11
 ```
 
----
+### 2. Instalar dependencias
 
-## 🔧 Componentes a Implementar
-
-### 1. **acquisition.py** 🔨
-**Responsabilidad:** Extraer información de productos de supermercados (adaptar código del reto 1)
-
-**Debe escribir:** Un archivo JSON en `data/raw/` con la información de los productos. Ejemplo de posible estructura (nos interesa la información nutricional para el ranking, el título y precio):
-```json
-[
-  {
-    "url": "https://www.condisline.com/TURRON-NESTLE-JUNGLY-232-G_210871_prd_es_ES.jsp",
-    "titulo": "TURRON NESTLE JUNGLY 232 G",
-    "valores_nutricionales_100_g": {
-      "Grasas": "30.4 gr",
-      "Saturadas": "15.6 gr",
-      "Hidratos de carbono": "58.3 gr",
-      "Azucares": "49 gr",
-      "Fibra alimentaria": "1.6 gr",
-      "Proteinas": "6.7 gr",
-      "Sal": "0.2 gr",
-      "Valor energetico": "537 kcal",
-      "Valor energetico en KJ": "2246 kJ"
-    },
-    "descripcion": "",
-    "categorias": [
-      "snacks"
-    ],
-    "precio_total": 4.49,
-    "precio_por_cantidad": 19.35,
-    "peso_volumen": "232g",
-    "origen": "condis",
-  },
-  ...
-]
-```
-
-
-**Requisitos mínimos:**
-- Al menos 200 productos distintos
-- Campos obligatorios: titulo, precio, información nutricional (proteinas, carbohidratos, grasas)
-- Manejo de errores durante la extracción
-
----
-
-### 2. **preprocessing.py** 🔨
-**Responsabilidad:** Limpiar y transformar los datos para el RAG
-
-**Entrada:** Archivo JSON de `data/raw/`  
-**Salida:** DataFrame procesado guardado en `data/clean/`
-
-**Transformaciones requeridas:**
-1. **Limpieza:**
-   - Eliminar filas con valores faltantes en campos críticos
-   - Estandarizar tipos de datos (precio numérico, proteínas numérico, etc.)
-   - Eliminar duplicados
-
-2. **Normalización:**
-   - Crear columna `texto_busqueda`: concatenación de titulo, marca y descripción (para embeddings)
-   - Normalizar precios: `norm_precio` = escalado entre 0-1 (inverso: más barato = más alto)
-   - Normalizar valor nutricional: `norm_nutri` = score de 0-100 basado en contenido proteico
-   - Limpiar y minusculizar textos
-
-3. **Enriquecimiento:**
-   - Agregar columna `score_nutricional` basada en macronutrientes
-   - Puede incluir categorías de productos
-
-**Output esperado:** DataFrame con columnas:
-```
-titulo, precio, proteinas, carbohidratos, grasas, fibra, calories, 
-texto_busqueda, norm_precio, norm_nutri, score_nutricional
-```
-
----
-
-## ⚙️ El Sistema RAG (rag.py) ✅
-
-El archivo `rag.py` ya está proporcionado e implementa:
-
-1. **Indexación (`crear_indice()`)**
-   - Usa `SentenceTransformer` para generar embeddings semánticos
-   - Crea un índice FAISS para búsqueda vectorial rápida
-
-2. **Búsqueda y Ranking (`buscar_y_responder()`)**
-   - Busca vectorialmente los 15 productos más similares
-   - Aplica re-ranking con la fórmula:
-     ```
-     Score Final = 60% Semántica + 20% Valor Nutricional + 20% Precio
-     ```
-   - Retorna los 3 mejores resultados formateados
-
----
-
-## 🚀 Flujo de Ejecución
-
-```
-┌─────────────────────┐
-│  acquisition.py     │  → Extrae datos de supermercados
-└──────────┬──────────┘
-           ↓
-      (raw/.json)
-           ↓
-┌─────────────────────┐
-│ preprocessing.py    │  → Limpia y normaliza
-└──────────┬──────────┘
-           ↓
-      (clean/.json)
-           ↓
-┌─────────────────────┐
-│   rag.py            │  → Crea índice + búsqueda
-│  (main.py lo llama) │
-└─────────────────────┘
-           ↓
-    Usuario consulta ← Respuesta con productos
-```
-
----
-
-## 📦 Dependencias
-
-Instala las dependencias (deberás actualiar con las que necesites para los primeros códigos) con:
 ```bash
 pip install -r requirements.txt
 ```
 
-**Librerías principales:**
-- `faiss-cpu`: Búsqueda vectorial eficiente
-- `numpy`: Operaciones numéricas
-- `sentence-transformers`: Generación de embeddings semánticos
-- `pandas`: Manipulación de datos (recomienda agregar)
+### 3. Ejecutar el pipeline completo
 
----
-
-## ✅ Checklist de Implementación
-
-- [ ] **acquisition.py:** Extrae >200 productos con estructura correcta
-- [ ] **preprocessing.py:** Limpia datos y crea todas las columnas requeridas
-- [ ] **requirements.txt:** Incluye todas las dependencias necesarias
-- [ ] **main.py:** Integra todo el pipeline en un flujo completo
-- [ ] **Pruebas:** El sistema RAG responde consultas correctamente
-- [ ] **Documentación:** Código comentado explicando cada paso
-
----
-
-## 📝 Ejemplo de Ejecución
-
-```python
-# En main.py
-from src.acquisition import obtener_productos
-from src.preprocessing import procesar_datos
-from src.rag import consultar
-
-# 1. Adquirir datos
-productos = obtener_productos()
-
-# 2. Procesar datos
-df_procesado = procesar_datos(productos)
-
-# 3. Crear índice y consultar
-index = consultar(df_procesado)
+```bash
+python main.py
 ```
+
+Esto ejecutará automáticamente:
+1. **Preprocessing** → limpia y normaliza `src/data/raw/ahorramas_products.json`
+2. **RAG** → genera embeddings, crea índice FAISS y lanza la interfaz web
+
+La interfaz se abrirá automáticamente en **http://localhost:5000**
+
+---
+
+## 📁 Estructura del proyecto
+
+```
+esic-rag-equipo-11/
+├── main.py                          # Punto de entrada del pipeline
+├── requirements.txt                 # Dependencias
+├── README.md
+├── data/
+│   └── ejemplo.json                 # Ejemplo de estructura de datos
+└── src/
+    ├── acquisition.py               # Scraper de Ahorramas
+    ├── preprocessing.py             # Limpieza y normalización de datos
+    ├── rag.py                       # Sistema RAG + interfaz web (Flask)
+    ├── ACQUISITION.ipynb            # Notebook del scraper
+    └── data/
+        ├── raw/
+        │   └── ahorramas_products.json     # Datos crudos scrapeados
+        └── clean/
+            ├── products_clean.csv          # Datos procesados (CSV)
+            └── products_clean.json         # Datos procesados (JSON)
+```
+
+---
+
+## 🔧 Componentes principales
+
+### acquisition.py
+Scraper para **www.ahorramas.com**. Extrae productos con título, precio e información nutricional mediante OCR sobre las imágenes de tabla nutricional.
+
+Para volver a ejecutar el scraper (no necesario, los datos ya están incluidos):
+```bash
+# Instalar Tesseract OCR primero:
+# Windows: https://github.com/UB-Mannheim/tesseract/wiki
+# Linux:   sudo apt-get install tesseract-ocr tesseract-ocr-spa
+
+pip install pytesseract Pillow
+cd src
+python acquisition.py
+```
+
+### preprocessing.py
+Limpia y transforma los datos crudos. Genera las columnas necesarias para el RAG:
+
+| Columna | Descripción |
+|---|---|
+| `titulo` | Nombre del producto (normalizado) |
+| `precio` | Precio en euros |
+| `proteinas` | Proteínas por 100g |
+| `carbohidratos` | Carbohidratos por 100g |
+| `grasas` | Grasas por 100g |
+| `fibra` | Fibra alimentaria por 100g |
+| `calories` | Valor energético en kcal |
+| `texto_busqueda` | Texto para embeddings semánticos |
+| `norm_precio` | Precio normalizado 0-1 (inverso) |
+| `norm_nutri` | Score proteínas 0-100 |
+| `score_nutricional` | Score nutricional agregado 0-100 |
+
+### rag.py
+Sistema RAG con interfaz web (Flask). Implementa:
+- Embeddings semánticos con `sentence-transformers`
+- Búsqueda vectorial con FAISS
+- Re-ranking: **60% semántica + 20% nutrición + 20% precio**
+- Interfaz web con filtros por cocina, precio y proteínas
+- Filtros por tipo de cocina: 🇮🇹 Italiana, 🇲🇽 Mexicana, 🇺🇸 Americana, 🇯🇵 Japonesa, 🇬🇷 Mediterránea, 🇮🇳 India, 🇨🇳 China, 🥗 Saludable
+
+---
+
+## 📦 Dependencias principales
+
+```
+faiss-cpu
+numpy
+sentence-transformers
+pandas
+flask
+requests
+beautifulsoup4
+pytesseract
+Pillow
+```
+
+---
+
+## 💻 Uso de la interfaz web
+
+Una vez ejecutado `python main.py`, se abre automáticamente el navegador en `http://localhost:5000`.
+
+**Funcionalidades:**
+- 🔍 **Buscador semántico** — escribe en lenguaje natural: *"algo rico en proteínas para después del gym"*
+- 🌍 **Filtro por cocina** — selecciona el tipo de cocina para filtrar productos relevantes
+- 💰 **Filtro por precio máximo** — slider de 0 a 50€
+- 💪 **Filtro por proteínas mínimas** — filtra por contenido proteico
+- 🥗 **Solo con nutrición** — muestra únicamente productos con datos nutricionales completos
+- 📊 **Score nutricional** — cada producto muestra su puntuación nutricional visual
+
+---
+
+## 👥 Equipo
+
+Equipo 11 — ESIC University  
+Asignatura: Procesamiento del Lenguaje Natural
+
